@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class AddTwoNumbersTest {
 
     @Test
-    void shouldAddTwoZeros() {
+    void test1() {
         Solution solution = new Solution();
         var l1 = new ListNode(0);
         var l2 = new ListNode(0);
@@ -20,7 +20,7 @@ class AddTwoNumbersTest {
     }
 
     @Test
-    void shouldAddTwoNumbers() {
+    void test2() {
         Solution solution = new Solution();
         var l13 = new ListNode(3);
         var l12 = new ListNode(4, l13);
@@ -38,7 +38,7 @@ class AddTwoNumbersTest {
     }
 
     @Test
-    void shouldAddTwoNonZeroNumber() {
+    void test3() {
         Solution solution = new Solution();
         var l17 = new ListNode(9);
         var l16 = new ListNode(9, l17);
@@ -63,6 +63,5 @@ class AddTwoNumbersTest {
         assertThat(listNode.next.next.next.next.next.val).isEqualTo(0);
         assertThat(listNode.next.next.next.next.next.next.val).isEqualTo(0);
         assertThat(listNode.next.next.next.next.next.next.next.val).isEqualTo(1);
-
     }
 }
