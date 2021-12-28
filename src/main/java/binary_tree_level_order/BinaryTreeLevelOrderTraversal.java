@@ -39,20 +39,19 @@ class Solution {
 
         while (!treeNodes.isEmpty()) {
             ArrayList<Integer> integers = new ArrayList<>();
-            ArrayDeque<TreeNode> temp = new ArrayDeque<>();
-            while (!treeNodes.isEmpty()) {
+            int size = treeNodes.size();
+            for (int i = 0; i < size; i++) {
                 TreeNode poppedNode = treeNodes.pop();
                 integers.add(poppedNode.val);
 
                 if (poppedNode.left != null) {
-                    temp.add(poppedNode.left);
+                    treeNodes.add(poppedNode.left);
                 }
                 if (poppedNode.right != null) {
-                    temp.add(poppedNode.right);
+                    treeNodes.add(poppedNode.right);
                 }
             }
             elements.add(integers);
-            treeNodes = temp;
         }
         return elements;
     }
