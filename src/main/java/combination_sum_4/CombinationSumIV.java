@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 class Solution {
-    private Map<String, Integer> cache;
+    private final Map<String, Integer> cache;
 
     public Solution() {
         this.cache = new HashMap<>();
