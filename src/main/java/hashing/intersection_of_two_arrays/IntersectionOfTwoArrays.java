@@ -9,16 +9,16 @@ class Solution {
     // the intersection of two arrays.
     public int numberofElementsInIntersection(int[] a, int[] b, int n, int m) {
 
-        Set<Integer> collect = Arrays.stream(a).boxed().collect(Collectors.toSet());
-        int count = 0;
+        Set<Integer> occurrence = Arrays.stream(a).boxed().collect(Collectors.toSet());
+        int intersectedElementCount = 0;
 
         for (int i = 0; i < m; i++) {
-            if (collect.contains(b[i])) {
-                count++;
-                collect.remove(b[i]);
+            if (occurrence.contains(b[i])) {
+                intersectedElementCount++;
+                occurrence.remove(b[i]);
             }
         }
-        return count;
+        return intersectedElementCount;
 
     }
 }
