@@ -19,12 +19,12 @@ class PositiveNegativePairTest {
 
         var pairs = solution.findPairs(input1, input1.length);
 
-        assertThat(pairs).containsExactlyInAnyOrderElementsOf(expected);
+        assertThat(pairs).containsExactlyElementsOf(expected);
     }
 
     private static Stream<Arguments> inputs() {
         return Stream.of(
-                Arguments.of(new int[]{1, 3, 6, -2, -1, -3, 2, 7}, List.of(-1, 1, -3, 3, -2, 2)),
+                Arguments.of(new int[]{1, 3, 6, -2, -1, -3, 2, 7}, List.of(1, -1, 3, -3, -2, 2)),
                 Arguments.of(new int[]{1, 2, 3, 4, 5, 6}, List.of()),
                 Arguments.of(new int[]{1, -1}, List.of(1, -1))
         );
