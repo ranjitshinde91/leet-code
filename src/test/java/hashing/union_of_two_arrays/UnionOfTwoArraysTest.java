@@ -1,4 +1,4 @@
-package hashing.intersection_of_two_arrays;
+package hashing.union_of_two_arrays;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class IntersectionOfTwoArraysTest {
+class UnionOfTwoArraysTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
@@ -16,15 +16,15 @@ class IntersectionOfTwoArraysTest {
 
         Solution solution = new Solution();
 
-        int numberOfElementsInIntersection = solution.numberofElementsInIntersection(input1, input2, input1.length, input2.length);
+        int numberOfElementsInIntersection = solution.doUnion(input1, input2);
 
         assertThat(numberOfElementsInIntersection).isEqualTo(expected);
     }
 
     private static Stream<Arguments> inputs() {
         return Stream.of(
-                Arguments.of(new int[]{89, 24, 75, 11, 23}, new int[]{89, 2, 4}, 1),
-                Arguments.of(new int[]{1, 2, 3, 4, 5, 6}, new int[]{3, 4, 5, 6, 7}, 4)
+                Arguments.of(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5}, 5)
         );
     }
+
 }
