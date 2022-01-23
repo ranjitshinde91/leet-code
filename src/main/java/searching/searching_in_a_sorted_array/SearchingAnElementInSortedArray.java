@@ -1,4 +1,4 @@
-package searching.searching_an_element_in_a_sorted_array;
+package searching.searching_in_a_sorted_array;
 
 class Solution {
     int searchInSorted(int[] arr, int element) {

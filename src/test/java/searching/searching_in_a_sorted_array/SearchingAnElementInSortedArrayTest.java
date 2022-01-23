@@ -1,4 +1,4 @@
-package searching.searching_an_element_in_a_sorted_array;
+package searching.searching_in_a_sorted_array;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
