@@ -1,5 +1,7 @@
 package searching.searching_in_an_infinite_sorted_array;
 
+
+//unbounded binary search
 class Solution {
 
     int searchInSorted(int[] arr, int element) {
