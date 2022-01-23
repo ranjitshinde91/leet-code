@@ -15,10 +15,10 @@ class Solution {
         if (arr[i] == element) {
             return i;
         }
-        return _searchInSorted(arr, i / 2, i - 1, element);
+        return binarySearch(arr, i / 2, i - 1, element);
     }
 
-    int _searchInSorted(int[] arr, int low, int high, int element) {
+    private int binarySearch(int[] arr, int low, int high, int element) {
         if (low > high) {
             return -1;
         }
@@ -26,8 +26,8 @@ class Solution {
         if (element == arr[mid]) {
             return mid;
         } else if (element > arr[mid]) {
-            return _searchInSorted(arr, mid + 1, high, element);
+            return binarySearch(arr, mid + 1, high, element);
         }
-        return _searchInSorted(arr, low, mid - 1, element);
+        return binarySearch(arr, low, mid - 1, element);
     }
 }

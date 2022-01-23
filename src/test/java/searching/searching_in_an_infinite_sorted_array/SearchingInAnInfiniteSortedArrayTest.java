@@ -28,6 +28,4 @@ class SearchingInAnInfiniteSortedArrayTest {
                 Arguments.of(new int[]{20, 40, 100, 300, 400, 500, 600}, 50, -1)
         );
     }
-
-
 }
