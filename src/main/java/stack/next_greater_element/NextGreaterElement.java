@@ -7,6 +7,7 @@ class Solution {
     public static long[] nextLargerElement(long[] arr, int n) {
         long[] nextLargerNumbers = new long[n];
         Stack<Integer> greaterElements = new Stack<>();
+
         greaterElements.push(n - 1);
         nextLargerNumbers[n - 1] = -1;
 
