@@ -4,7 +4,7 @@ import java.util.Stack;
 
 class Solution {
     //Function to calculate the span of stock price for all n days.
-    public static int[] calculateSpan1(int price[], int n) {
+    public static int[] calculateSpan1(int[] price, int n) {
         int[] ints = new int[n];
         ints[0] = 1;
 
@@ -20,7 +20,7 @@ class Solution {
         return ints;
     }
 
-    public static int[] calculateSpan(int price[], int n) {
+    public static int[] calculateSpan(int[] price, int n) {
         int[] ints = new int[n];
 
         Stack<Integer> previousGreater = new Stack<>();
