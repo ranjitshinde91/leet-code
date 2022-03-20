@@ -24,6 +24,9 @@ class ParenthesisCheckerUnitTest {
     private static Stream<Arguments> inputs() {
         return Stream.of(
                 Arguments.of("]", false),
+                Arguments.of("([])", true),
+                Arguments.of("((())", false),
+                Arguments.of("(()))", false),
                 Arguments.of("{([])}", true),
                 Arguments.of("()", true),
                 Arguments.of("([]", false)
