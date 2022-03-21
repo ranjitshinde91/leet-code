@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.List;
 
 public class PrefixEvaluation {
-    private static List<String> operators = List.of("+", "-", "*", "/", "^");
+    private static final List<String> operators = List.of("+", "-", "*", "/", "^");
 
 
     public long evaluate(String prefix) {
