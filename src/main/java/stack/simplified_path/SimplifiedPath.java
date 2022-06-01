@@ -12,10 +12,8 @@ public class SimplifiedPath {
                 if ("..".equals(s)) {
                     if (!stack.isEmpty()) {
                         stack.pop();
-                        stack.pop();
                     }
                 } else {
-                    stack.push("/");
                     stack.push(s);
                 }
             }
@@ -27,10 +25,10 @@ public class SimplifiedPath {
     }
 
     private String buildPath(Stack<String> stack) {
-        String simplifiedPath = "";
+        StringBuilder simplifiedPath = new StringBuilder(stack.pop());
         while (!stack.isEmpty()) {
-            simplifiedPath = stack.pop() + simplifiedPath;
+            simplifiedPath.insert(0, stack.pop() + "/");
         }
-        return simplifiedPath;
+        return "/"+ simplifiedPath;
     }
 }
