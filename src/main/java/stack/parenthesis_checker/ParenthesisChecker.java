@@ -20,7 +20,8 @@ class Solution {
 
             if (!paranthesisPair.containsKey(character)) {
                 stack.push(character);
-            } else if (stack.isEmpty()) {
+            }
+            else if (stack.isEmpty()) {
                 return false;
             } else {
                 Character poppedChar = stack.pop();
