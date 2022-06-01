@@ -8,7 +8,7 @@ public class SimplifiedPath {
         String[] split = path.split("/");
         Stack<String> stack = new Stack<>();
         for (String s : split) {
-            if (!("".equals(s) || "/".equals(s) || ".".equals(s))) {
+            if (!("".equals(s) || ".".equals(s))) {
                 if ("..".equals(s)) {
                     if (!stack.isEmpty()) {
                         stack.pop();
