@@ -1,79 +1,87 @@
 package stack.infix_to_postfix;
 
-import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+import java.util.Stack;
+
 
 public class InfixToPostfix {
-
-    private static Map<Character, Integer> operators = Map.of(
-            '+', 0,
-            '-', 0,
-            '*', 1,
-            '/', 1,
-            '^', 2);
+    private final Map<Character, Integer> operators =
+            Map.of(
+                    '+', 0,
+                    '-', 0,
+                    '*', 1,
+                    '/', 1,
+                    '^', 2);
     private static final List<Character> parenthesis = List.of('(', ')');
 
-    public String convert(String infix) {
-        StringBuilder stringBuilder = new StringBuilder();
-        ArrayDeque<Character> stack = new ArrayDeque<>();
+    private final Map<Character, Associativity> associativityMap =
+            Map.of(
+                    '+', Associativity.LEFT_T0_RIGHT,
+                    '-', Associativity.LEFT_T0_RIGHT,
+                    '*', Associativity.LEFT_T0_RIGHT,
+                    '/', Associativity.LEFT_T0_RIGHT,
+                    '^', Associativity.RIGHT_TO_LEFT
+            );
 
+    public String convert(String infix) {
+        Stack<Character> stack = new Stack<>();
+        StringBuilder postFix = new StringBuilder();
         for (int i = 0; i < infix.length(); i++) {
-            char c = infix.charAt(i);
-            if (isOperand(c)) {
-                stringBuilder.append(c);
+            Character character = infix.charAt(i);
+            if (isOperand(character)) {
+                postFix.append(character);
+            } else if ('(' == character) {
+                stack.push(character);
+            } else if (')' == character) {
+                while ('(' != stack.peek()) {
+                    postFix.append(stack.pop());
+                }
+                stack.pop();
             } else {
-                if (c == '(') {
-                    stack.push(c);
-                } else if (c == ')') {
-                    while (!stack.isEmpty() && '(' != stack.peek()) {
-                        stringBuilder.append(stack.pop());
+                if (stack.isEmpty() || parenthesis(stack.peek())) {
+                    stack.push(character);
+                } else {
+                    while (!stack.isEmpty() && shouldPopOperator(character, stack.peek())) {
+                        postFix.append(stack.pop());
                     }
-                    stack.pop();
-                } else if (isOperator(c)) {
-                    if (stack.isEmpty() || !isOperator(stack.peek())) {
-                        stack.push(c);
-                    } else {
-                        Character pop = stack.peek();
-                        if (isHigherPrecedenceThanStackTop(c, pop)) {
-                            stack.push(c);
-                        } else if (isLowerPrecedenceThanStackTop(c, pop)) {
-                            while (!stack.isEmpty() && isHigherPrecedenceThanStackTop(c, stack.peek())) {
-                                stringBuilder.append(stack.pop());
-                            }
-                            stack.push(c);
-                        } else if (isEqualPrecedenceThanStackTop(c, pop)) {
-                            stack.push(c);
-                        }
-                    }
+                    stack.push(character);
                 }
             }
         }
         while (!stack.isEmpty()) {
-            stringBuilder.append(stack.pop());
+            postFix.append(stack.pop());
         }
-
-        return stringBuilder.toString();
+        return postFix.toString();
     }
 
-    private boolean isEqualPrecedenceThanStackTop(Character c, Character pop) {
-        return Objects.equals(operators.get(c), operators.get(pop));
+    private boolean shouldPopOperator(Character character, Character top) {
+        return isLowerPrecedenceThanStackTop(character, top) ||
+                (isEqualPrecedenceToStackTop(character, top) && associativityMap.get(character) == Associativity.LEFT_T0_RIGHT);
     }
 
-    private boolean isLowerPrecedenceThanStackTop(Character c, Character pop) {
-        return operators.get(c) < operators.get(pop);
+    private boolean parenthesis(Character character) {
+        return parenthesis.contains(character);
     }
 
-    private boolean isHigherPrecedenceThanStackTop(Character c, Character pop) {
-        return operators.get(c) > operators.get(pop);
+    private boolean isLowerPrecedenceThanStackTop(Character current, Character top) {
+        return operators.get(current) < operators.get(top);
     }
 
-    private boolean isOperator(char c) {
-        return operators.containsKey(c);
+    private boolean isHigherPrecedenceThanStackTop(Character current, Character top) {
+        return operators.get(current) > operators.get(top);
     }
 
-    private boolean isOperand(char c) {
-        return !operators.containsKey(c) && !parenthesis.contains(c);
+    private boolean isEqualPrecedenceToStackTop(Character current, Character top) {
+        return (operators.get(current) == operators.get(top));
     }
+
+    private boolean isOperand(Character character) {
+        return !operators.containsKey(character) && !parenthesis.contains(character);
+    }
+}
+
+enum Associativity {
+    LEFT_T0_RIGHT,
+    RIGHT_TO_LEFT
 }

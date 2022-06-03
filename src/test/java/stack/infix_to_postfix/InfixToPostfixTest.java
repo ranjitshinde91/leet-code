@@ -22,10 +22,13 @@ class InfixToPostfixTest {
 
     private static Stream<Arguments> inputs() {
         return Stream.of(
+                Arguments.of("a+b-c", "ab+c-"),
+                Arguments.of("a+b-c+d", "ab+c-d+"),
                 Arguments.of("a+b*c", "abc*+"),
                 Arguments.of("(a+b)*c", "ab+c*"),
                 Arguments.of("a^b^c", "abc^^"),
-                Arguments.of("(a+b)*(c+d)", "ab+cd+*")
+                Arguments.of("(a+b)*(c+d)", "ab+cd+*"),
+                Arguments.of("a+b/c-d*e", "abc/+de*-")
         );
     }
 
