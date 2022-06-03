@@ -4,16 +4,15 @@ import java.util.List;
 import java.util.Stack;
 
 public class PostFixEvaluation {
-    private static List<String> operators = List.of("+", "-", "*", "/", "^");
+    private static final List<String> operators = List.of("+", "-", "*", "/", "^");
 
     public long evaluate(String postfix) {
         String[] expression = postfix.split(" ");
-        Stack<Double> stack = new Stack();
-        for(int i=0;i<expression.length;i++){
-            String character = expression[i];
-            if(isOperand(character)){
+        Stack<Double> stack = new Stack<>();
+        for (String character : expression) {
+            if (isOperand(character)) {
                 stack.push(Double.valueOf(character));
-            }else{
+            } else {
                 Double second = stack.pop();
                 Double first = stack.pop();
                 stack.push(evaluate(first, second, character));
