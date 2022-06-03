@@ -8,19 +8,16 @@ public class PostFixEvaluation {
 
     public long evaluate(String postfix) {
         String[] expression = postfix.split(" ");
-        Stack<Double> stack = new Stack<>();
-
-        for (int i = 0; i < expression.length; i++) {
-            String s = expression[i];
-            if (isOperand(s)) {
-                stack.push(Double.valueOf(s));
-            } else {
+        Stack<Double> stack = new Stack();
+        for(int i=0;i<expression.length;i++){
+            String character = expression[i];
+            if(isOperand(character)){
+                stack.push(Double.valueOf(character));
+            }else{
                 Double second = stack.pop();
                 Double first = stack.pop();
-                Double value1 = evaluate(first, second, s);
-                stack.push(value1);
+                stack.push(evaluate(first, second, character));
             }
-
         }
         return stack.pop().longValue();
     }

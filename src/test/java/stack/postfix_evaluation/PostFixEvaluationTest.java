@@ -24,7 +24,8 @@ class PostFixEvaluationTest {
         return Stream.of(
                 Arguments.of("10 2 * 3 +", 23),
                 Arguments.of("10 2 + 3 *", 36),
-                Arguments.of("10 2 3 ^ ^", 1_0000_0000)
+                Arguments.of("10 2 3 ^ ^", 1_0000_0000),
+                Arguments.of("10 3 2 + /", 2)
         );
     }
 
