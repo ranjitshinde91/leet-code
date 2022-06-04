@@ -19,6 +19,14 @@ public class MinHeap {
         this.size = ints.length;
     }
 
+    public static MinHeap build(int[] ints) {
+        MinHeap minHeap = new MinHeap(ints);
+        for(int i= (minHeap.size-2)/2;i>=0; i--){
+            minHeap.heapify(i);
+        }
+        return minHeap;
+    }
+
     public int size() {
         return this.size;
     }
