@@ -38,6 +38,15 @@ class MinHeapTest {
         var minValue = minHeap.deleteMin();
 
         assertThat(minValue).isEqualTo(20);
-        assertThat(minHeap.values()).containsExactly(25, 35,30, 60, 40, 80, 32, 100, 70);
+        assertThat(minHeap.values()).containsExactly(25, 35, 30, 60, 40, 80, 32, 100, 70);
+    }
+
+    @Test
+    void shouldDeleteKeyKey() {
+        MinHeap minHeap = new MinHeap(new int[]{10, 20, 30, 40, 50, 35, 38, 45});
+
+        minHeap.deleteKey(3);
+
+        assertThat(minHeap.values()).containsExactly(10,20,30,45,50,35,38);
     }
 }

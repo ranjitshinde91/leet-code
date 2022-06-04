@@ -109,4 +109,14 @@ public class MinHeap {
         heapify(0);
         return min;
     }
+
+    public void decreaseKey(int index, int newValue){
+        array[index] = newValue;
+        rearrange(index);
+    }
+
+    public void deleteKey(int i) {
+        decreaseKey(i, Integer.MIN_VALUE);
+        deleteMin();
+    }
 }
