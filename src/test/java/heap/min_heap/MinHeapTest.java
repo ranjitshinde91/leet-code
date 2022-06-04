@@ -56,4 +56,11 @@ class MinHeapTest {
 
         assertThat(minHeap.values()).containsExactly(2, 4, 8, 5, 10, 20);
     }
+
+    @Test
+    void shouldSortInDecreasingOrder() {
+        MinHeap minHeap = MinHeap.sort(new int[]{10, 5, 20, 2, 4, 8});
+
+        assertThat(minHeap.array()).containsExactly(20, 10, 8, 5, 4, 2);
+    }
 }

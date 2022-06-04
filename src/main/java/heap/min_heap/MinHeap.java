@@ -27,6 +27,19 @@ public class MinHeap {
         return minHeap;
     }
 
+    public static MinHeap sort(int[] ints) {
+        MinHeap meanHeap = build(ints);
+        meanHeap.sort();
+        return meanHeap;
+    }
+
+    private void sort(){
+        while(size>0){
+            int min = deleteMin();
+            array[size] = min;
+        }
+    }
+
     public int size() {
         return this.size;
     }
@@ -107,7 +120,7 @@ public class MinHeap {
         if(size == 0){
             return -1;
         }
-        if(size ==1){
+        if(size == 1){
             size--;
             return array[0];
         }
@@ -126,5 +139,9 @@ public class MinHeap {
     public void deleteKey(int i) {
         decreaseKey(i, Integer.MIN_VALUE);
         deleteMin();
+    }
+
+    protected int[] array(){
+        return this.array;
     }
 }
