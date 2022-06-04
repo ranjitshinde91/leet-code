@@ -1,49 +1,48 @@
 package stack.prefix_evaluation;
 
 import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.List;
 
 public class PrefixEvaluation {
     private static final List<String> operators = List.of("+", "-", "*", "/", "^");
 
 
-    public long evaluate(String prefix) {
-        String[] expression = prefix.split(" ");
-        ArrayDeque<String> stacks = new ArrayDeque<>();
+    public long evaluate(String prefix){
 
-        for (int i = expression.length - 1; i >= 0; i--) {
-            String s = expression[i];
-            if (!isOperator(s)) {
-                stacks.push(s);
-            } else {
-                String pop1 = stacks.pop();
-                String pop2 = stacks.pop();
-                Double evaluate = evaluate(Double.valueOf(pop1), Double.valueOf(pop2), s);
-                stacks.push(String.valueOf(evaluate));
+        String[] expression = prefix.split(" ");
+        Deque<Double> stack = new ArrayDeque();
+
+        for(int i=expression.length-1;i>=0;i--){
+
+            String element = expression[i];
+
+            if(isOperand(element)){
+                stack.push(Double.valueOf(element));
+            }else{
+                Double second = stack.pop();
+                Double first = stack.pop();
+                stack.push(evaluate(element, second, first));
             }
         }
-        Double v = Double.parseDouble(stacks.pop());
-        return v.longValue();
+
+        return stack.pop().longValue();
+
     }
 
-
-    private Double evaluate(Double first, Double second, String s) {
-        switch (s) {
-            case "*":
-                return first * second;
-            case "/":
-                return first / second;
-            case "^":
-                return Math.pow(first, second);
-            case "+":
-                return first + second;
-            case "-":
-                return first - second;
-        }
-        throw new RuntimeException();
+    private boolean isOperand(String element) {
+        return !operators.contains(element);
     }
 
-    private boolean isOperator(String character) {
-        return operators.contains(character);
+    private Double evaluate(String operator, Double first, Double second){
+
+        return switch (operator) {
+            case "+" -> first + second;
+            case "-" -> first - second;
+            case "*" -> first * second;
+            case "/" -> first / second;
+            case "^" -> Math.pow(first, second);
+            default -> 0.0;
+        };
     }
 }
