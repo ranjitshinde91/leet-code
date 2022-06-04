@@ -1,5 +1,6 @@
 package heap.min_heap;
 
+import heap.min_heap.MinHeap;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
