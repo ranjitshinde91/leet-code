@@ -22,7 +22,7 @@ public class KLargestElements {
     }
 
     public static ArrayList<Integer> kLargest(int[] arr, int k, int n) {
-        PriorityQueue<Integer> pq = new PriorityQueue();
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
         ArrayList<Integer> list = new ArrayList<>();
 
         for (int i = 0; i < k; i++) {
