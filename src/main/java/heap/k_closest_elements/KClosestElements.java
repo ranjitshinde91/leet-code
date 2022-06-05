@@ -11,13 +11,13 @@ public class KClosestElements {
         ArrayList<Integer> list = new ArrayList<>();
 
         for (int i = 0; i < k; i++) {
-            pq.add(new Element(input[i], Math.abs(input[i] - element)));
+            pq.add(new Element(input[i], diffOf(input[i], element)));
         }
 
         for (int i = k; i < input.length; i++) {
-            if (Math.abs(input[i] - element) < pq.peek().difference()) {
+            if (diffOf(input[i], element) < pq.peek().difference()) {
                 pq.poll();
-                pq.add(new Element(input[i], Math.abs(input[i] - element)));
+                pq.add(new Element(input[i], diffOf(input[i], element)));
             }
         }
 
@@ -26,6 +26,10 @@ public class KClosestElements {
         }
         return list;
 
+    }
+
+    private int diffOf(int first, int second) {
+        return Math.abs(first - second);
     }
 
     static class Element {
