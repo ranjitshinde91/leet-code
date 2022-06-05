@@ -52,9 +52,9 @@ public class MergeKSortedArrays {
     }
 
     static class Element{
-        private int arrayIndex;
-        private int columnIndex;
-        private int value;
+        private final int arrayIndex;
+        private final int columnIndex;
+        private final int value;
 
 
         public Element(int arrayIndex, int columnIndex, int value)
