@@ -18,13 +18,13 @@ class KLargestElementsTest {
 
         List<Integer> elements = kLargestElements.kLargest(input, k, input.length);
 
-        assertThat(elements).containsExactlyInAnyOrderElementsOf(expected);
+        assertThat(elements).containsExactlyElementsOf(expected);
     }
 
     private static Stream<Arguments> inputs() {
         return Stream.of(
-                Arguments.of(new int[]{5, 15, 10, 20, 8}, 2, List.of(15, 20)),
-                Arguments.of(new int[]{8, 6, 4, 10, 9}, 3, List.of(8, 9, 10))
+                Arguments.of(new int[]{5, 15, 10, 20, 8}, 2, List.of(20, 15)),
+                Arguments.of(new int[]{8, 6, 4, 10, 9}, 3, List.of(10, 9, 8))
         );
     }
 
