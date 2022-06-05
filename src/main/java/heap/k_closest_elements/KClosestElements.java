@@ -7,7 +7,7 @@ public class KClosestElements {
 
     public List<Integer> closest(int[] input, int element, int k) {
 
-        PriorityQueue<Element> pq = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Element> pq = new PriorityQueue<>(Comparator.comparingInt(Element::difference).reversed());
         ArrayList<Integer> list = new ArrayList<>();
 
         for (int i = 0; i < k; i++) {
@@ -28,7 +28,7 @@ public class KClosestElements {
 
     }
 
-    static class Element implements Comparable<Element> {
+    static class Element {
         private final int value;
         private final Integer difference;
 
@@ -44,11 +44,6 @@ public class KClosestElements {
 
         public Integer difference() {
             return this.difference;
-        }
-
-        @Override
-        public int compareTo(Element other) {
-            return Integer.compare(this.difference, other.difference);
         }
     }
 }
