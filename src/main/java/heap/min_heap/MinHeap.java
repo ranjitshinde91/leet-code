@@ -66,11 +66,15 @@ public class MinHeap {
     public void rearrange(final int i) {
         int index = i;
         while (index > 0 && array[parent(index)] > array[index]) {
-            int temp = array[index];
-            array[index] = array[parent(index)];
-            array[parent(index)] = temp;
+            swap(index, parent(index));
             index = parent(index);
         }
+    }
+
+    private void swap(int index, int index1) {
+        int temp = array[index];
+        array[index] = array[index1];
+        array[index1] = temp;
     }
 
     public int[] values() {
@@ -101,9 +105,7 @@ public class MinHeap {
             smallest = right;
         }
         if (smallest != index) {
-            int temp = array[smallest];
-            array[smallest] = array[index];
-            array[index] = temp;
+            swap(smallest, index);
 
             heapify(smallest);
         }
