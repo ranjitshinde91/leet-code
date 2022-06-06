@@ -34,10 +34,6 @@ class TrieNode {
     public boolean isEndOfWord() {
         return this.isEndOfWord;
     }
-
-    private int indexOf(Character character) {
-        return character - 'a';
-    }
 }
 
 public class TrieOperations {
