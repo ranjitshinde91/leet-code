@@ -7,24 +7,25 @@ class TrieNode {
     TrieNode[] children = new TrieNode[ALPHABET_COUNT];
     boolean isEndOfWord;
 
-    public boolean contains(Character ch){
+    public boolean contains(Character ch) {
         return this.children[indexOf(ch)] != null;
     }
 
-    public TrieNode get(Character ch){
+    public TrieNode get(Character ch) {
         return this.children[indexOf(ch)];
     }
 
-    public void add(Character ch, TrieNode node){
+    public void add(Character ch, TrieNode node) {
         this.children[indexOf(ch)] = node;
 
     }
 
-    public void isEndOfWord(boolean isEndOfWord){
+    public void isEndOfWord(boolean isEndOfWord) {
         this.isEndOfWord = isEndOfWord;
     }
-    private int indexOf(Character character){
-        return character- 'a';
+
+    private int indexOf(Character character) {
+        return character - 'a';
     }
 }
 
@@ -32,20 +33,20 @@ public class TrieOperations {
 
     private final TrieNode rootNode;
 
-    public TrieOperations(){
+    public TrieOperations() {
         rootNode = new TrieNode();
     }
 
 
-    public void insert(String word){
+    public void insert(String word) {
         _insert(rootNode, word);
     }
 
-    private void _insert(TrieNode node , String word){
+    private void _insert(TrieNode node, String word) {
         TrieNode current = node;
-        for(int i=0;i<word.length();i++){
+        for (int i = 0; i < word.length(); i++) {
             Character ch = word.charAt(i);
-            if(!current.contains(ch)){
+            if (!current.contains(ch)) {
                 TrieNode newNode = new TrieNode();
                 current.add(ch, newNode);
             }
@@ -58,11 +59,11 @@ public class TrieOperations {
         TrieNode current = rootNode;
 
         for (int i = 0; i < word.length(); i++) {
-            int index = word.charAt(i) - 'a';
-            if (current.children[index] == null) {
+            char character = word.charAt(i);
+            if (!current.contains(character)) {
                 return false;
             }
-            current = current.children[index];
+            current = current.get(character);
         }
         return current.isEndOfWord;
     }
