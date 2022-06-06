@@ -6,17 +6,24 @@ public class CountDistinctRowsInABinaryMatrix {
 
 
     public int count(int[][] input) {
-
         Trie trie = new Trie();
+        int distinctRows = 0;
 
         for (int[] ints : input) {
-            StringBuilder row = new StringBuilder();
-            for (int element : ints) {
-                row.append(element);
+            String row = row(ints);
+            if (!trie.search(row)) {
+                trie.insert(row);
+                distinctRows++;
             }
-            trie.insert(row.toString());
         }
+        return distinctRows;
+    }
 
-        return trie.totalWords();
+    private String row(int[] ints) {
+        StringBuilder row = new StringBuilder();
+        for (int element : ints) {
+            row.append(element);
+        }
+        return row.toString();
     }
 }

@@ -15,8 +15,7 @@ class CountDistinctRowsInABinaryMatrixTest {
     void test1(int[][] input, int expected) {
         var subject = new CountDistinctRowsInABinaryMatrix();
 
-        int output = subject.
-                count(input);
+        int output = subject.count(input);
 
         assertThat(output).isEqualTo(expected);
     }
