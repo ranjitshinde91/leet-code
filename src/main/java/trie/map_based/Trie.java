@@ -1,7 +1,7 @@
 package trie.map_based;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 class TrieNode {
     private final Map<Character, TrieNode> children = new HashMap<>();
@@ -33,6 +33,10 @@ class TrieNode {
 
     public boolean isEndOfWord() {
         return this.isEndOfWord;
+    }
+
+    public List<TrieNode> children() {
+        return new ArrayList<>(this.children.values());
     }
 }
 
@@ -89,6 +93,21 @@ public class Trie {
         if (!(childNode.hasChildren() || childNode.isEndOfWord())) {
             node.removeChildren(word.charAt(index));
         }
+    }
+
+    public int totalWords() {
+        return _extracted(rootNode);
+    }
+
+    private int _extracted(TrieNode node) {
+        if (!node.hasChildren() && node.isEndOfWord()) {
+            return 1;
+        }
+        int totalNumberOfWords = node.isEndOfWord() ? 1 : 0;
+        for (TrieNode children : node.children()) {
+            totalNumberOfWords = totalNumberOfWords + _extracted(children);
+        }
+        return totalNumberOfWords;
     }
 }
 

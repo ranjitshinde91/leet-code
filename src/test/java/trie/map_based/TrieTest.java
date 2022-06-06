@@ -82,4 +82,37 @@ class TrieTest {
 
         assertThat(trie.search("zoo")).isFalse();
     }
+
+    @Test
+    void shouldReturnWordCount() {
+
+        Trie trieOperations = new Trie();
+
+        trieOperations.insert("bad");
+        trieOperations.insert("bat");
+        trieOperations.insert("geek");
+        trieOperations.insert("geeks");
+        trieOperations.insert("cat");
+        trieOperations.insert("cut");
+        trieOperations.insert("zoo");
+
+        assertThat(trieOperations.totalWords()).isEqualTo(7);
+    }
+
+    @Test
+    void shouldReturnWordCountForOnlyOneWord() {
+
+        Trie trieOperations = new Trie();
+
+        trieOperations.insert("bad");
+
+        assertThat(trieOperations.totalWords()).isEqualTo(1);
+    }
+
+    @Test
+    void shouldReturnWordCountForEmptyTrie() {
+        Trie trieOperations = new Trie();
+
+        assertThat(trieOperations.totalWords()).isEqualTo(0);
+    }
 }
