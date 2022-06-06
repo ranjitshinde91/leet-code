@@ -83,16 +83,16 @@ public class TrieOperations {
         _delete(rootNode, word, 0);
     }
 
-    private boolean _delete(TrieNode node, String word, int index) {
+    private void _delete(TrieNode node, String word, int index) {
         if (index == word.length()) {
             node.isEndOfWord(false);
-            return !node.hasChildren();
+            return;
         }
-        boolean a = _delete(node.getChildren(word.charAt(index)), word, index + 1);
-        if (a) {
+        TrieNode childNode = node.getChildren(word.charAt(index));
+        _delete(childNode, word, index + 1);
+        if (!(childNode.hasChildren() || childNode.isEndOfWord())) {
             node.removeChildren(word.charAt(index));
         }
-        return !(node.hasChildren() || node.isEndOfWord());
     }
 }
 
