@@ -7,11 +7,24 @@ class TrieNode {
     TrieNode[] children = new TrieNode[ALPHABET_COUNT];
     boolean isEndOfWord;
 
-    public TrieNode() {
-        this.isEndOfWord = false;
-        for (int i = 0; i < ALPHABET_COUNT; i++) {
-            children[i] = null;
-        }
+    public boolean contains(Character ch){
+        return this.children[indexOf(ch)] != null;
+    }
+
+    public TrieNode get(Character ch){
+        return this.children[indexOf(ch)];
+    }
+
+    public void add(Character ch, TrieNode node){
+        this.children[indexOf(ch)] = node;
+
+    }
+
+    public void isEndOfWord(boolean isEndOfWord){
+        this.isEndOfWord = isEndOfWord;
+    }
+    private int indexOf(Character character){
+        return character- 'a';
     }
 }
 
@@ -19,22 +32,26 @@ public class TrieOperations {
 
     private final TrieNode rootNode;
 
-    public TrieOperations() {
+    public TrieOperations(){
         rootNode = new TrieNode();
     }
 
-    public void insert(String word) {
-        TrieNode current = rootNode;
 
-        for (int i = 0; i < word.length(); i++) {
-            int index = word.charAt(i) - 'a';
-            if (current.children[index] == null) {
-                var newNode = new TrieNode();
-                current.children[index] = newNode;
+    public void insert(String word){
+        _insert(rootNode, word);
+    }
+
+    private void _insert(TrieNode node , String word){
+        TrieNode current = node;
+        for(int i=0;i<word.length();i++){
+            Character ch = word.charAt(i);
+            if(!current.contains(ch)){
+                TrieNode newNode = new TrieNode();
+                current.add(ch, newNode);
             }
-            current = current.children[index];
+            current = current.get(ch);
         }
-        current.isEndOfWord = true;
+        current.isEndOfWord(true);
     }
 
     public boolean search(String word) {
