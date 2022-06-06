@@ -1,4 +1,4 @@
-package trie.operations_map_based;
+package trie.map_based;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,11 +36,11 @@ class TrieNode {
     }
 }
 
-public class TrieOperations {
+public class Trie {
 
     private final TrieNode rootNode;
 
-    public TrieOperations() {
+    public Trie() {
         rootNode = new TrieNode();
     }
 

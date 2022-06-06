@@ -1,15 +1,15 @@
-package trie.operations_map_based;
+package trie.map_based;
 
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class TrieOperationsTest {
+class TrieTest {
 
     @Test
     void shouldInsertNewWordsInTrie() {
 
-        TrieOperations trieOperations = new TrieOperations();
+        Trie trieOperations = new Trie();
 
         trieOperations.insert("bad");
         trieOperations.insert("bat");
@@ -40,7 +40,7 @@ class TrieOperationsTest {
     @Test
     void shouldReturnFalseWhenSearchOnEmptyTrie() {
 
-        TrieOperations trieOperations = new TrieOperations();
+        Trie trieOperations = new Trie();
 
         assertThat(trieOperations.search("b")).isFalse();
     }
@@ -49,7 +49,7 @@ class TrieOperationsTest {
     @Test
     void shouldDeleteWithoutDeletingAnyNode() {
 
-        TrieOperations trieOperations = new TrieOperations();
+        Trie trieOperations = new Trie();
 
         trieOperations.insert("geek");
         trieOperations.insert("geeks");
@@ -63,7 +63,7 @@ class TrieOperationsTest {
     @Test
     void shouldDeleteWithDeletionOfANode() {
 
-        TrieOperations trieOperations = new TrieOperations();
+        Trie trieOperations = new Trie();
         trieOperations.insert("bad");
         trieOperations.insert("bat");
 
@@ -75,12 +75,11 @@ class TrieOperationsTest {
 
     @Test
     void shouldDeleteWithDeletionOfEntireChain() {
+        Trie trie = new Trie();
+        trie.insert("zoo");
 
-        TrieOperations trieOperations = new TrieOperations();
-        trieOperations.insert("zoo");
+        trie.delete("zoo");
 
-        trieOperations.delete("zoo");
-
-        assertThat(trieOperations.search("zoo")).isFalse();
+        assertThat(trie.search("zoo")).isFalse();
     }
 }

@@ -1,7 +1,7 @@
-package trie.operations_array_based;
+package trie.array_based;
 
 
-import static trie.operations_array_based.TrieNode.ALPHABET_COUNT;
+import static trie.array_based.TrieNode.ALPHABET_COUNT;
 
 class TrieNode {
     public static final int ALPHABET_COUNT = 26;
@@ -16,11 +16,11 @@ class TrieNode {
     }
 }
 
-public class TrieOperations {
+public class Trie {
 
     private final TrieNode rootNode;
 
-    public TrieOperations() {
+    public Trie() {
         rootNode = new TrieNode();
     }
 
