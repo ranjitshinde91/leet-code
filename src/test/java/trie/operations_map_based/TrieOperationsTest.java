@@ -1,4 +1,4 @@
-package trie;
+package trie.operations_map_based;
 
 import org.junit.jupiter.api.Test;
 
@@ -83,5 +83,4 @@ class TrieOperationsTest {
 
         assertThat(trieOperations.search("zoo")).isFalse();
     }
-
 }
