@@ -10,14 +10,13 @@ public class ActivitySelection {
         for (int i = 0; i < n; i++) {
             activities.add(Activity.from(start[i], end[i]));
         }
-        int currentTime = 0;
-        int completedActivities = 0;
-
-        for (int i = 0; i < n; i++) {
-            Activity activity = activities.poll();
-            if (activity.start() > currentTime) {
+        int completedActivities = 1;
+        Activity lastActivity = activities.poll();
+        while (!activities.isEmpty()) {
+            Activity poll = activities.poll();
+            if (poll.start() > lastActivity.end()) {
                 completedActivities++;
-                currentTime = activity.end();
+                lastActivity = poll;
             }
         }
         return completedActivities;
