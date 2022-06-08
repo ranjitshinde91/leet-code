@@ -1,4 +1,4 @@
-package combination_sum_4;
+package other.combination_sum_4;
 
 import java.util.HashMap;
 import java.util.Map;

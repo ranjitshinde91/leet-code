@@ -1,6 +1,8 @@
-package next_right_pointer;
+package other.next_right_pointer;
 
 import org.junit.jupiter.api.Test;
+import other.next_right_pointer.Node;
+import other.next_right_pointer.Solution;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package nth_node_from_the_end_of_list;
+package other.nth_node_from_the_end_of_list;
 
 
 class ListNode {

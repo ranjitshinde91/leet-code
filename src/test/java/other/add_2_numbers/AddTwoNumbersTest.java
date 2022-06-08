@@ -1,4 +1,4 @@
-package add_2_numbers;
+package other.add_2_numbers;
 
 
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package combination_sum;
+package other.combination_sum;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package binary_tree_level_order;
+package other.binary_tree_level_order;
 
 import org.junit.jupiter.api.Test;
 

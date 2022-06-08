@@ -1,4 +1,4 @@
-package next_right_pointer;
+package other.next_right_pointer;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

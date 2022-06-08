@@ -1,4 +1,4 @@
-package first_and_last_position;
+package other.first_and_last_position;
 
 class Solution {
     public int[] searchRange(int[] nums, int target) {

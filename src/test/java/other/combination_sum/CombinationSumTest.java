@@ -1,4 +1,4 @@
-package combination_sum;
+package other.combination_sum;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
