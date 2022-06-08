@@ -1,4 +1,4 @@
-package partition_list;
+package other.partition_list;
 
 class ListNode {
     int val;

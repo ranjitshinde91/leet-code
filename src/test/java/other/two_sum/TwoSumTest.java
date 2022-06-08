@@ -1,4 +1,4 @@
-package two_sum;
+package other.two_sum;
 
 import org.junit.jupiter.api.Test;
 
