@@ -4,31 +4,38 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class FindMedianInAStream {
-    private  final PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
-    private  final PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+    private final PriorityQueue<Integer> greaterHalf = new PriorityQueue<Integer>();
+    private final PriorityQueue<Integer> smallerHalf = new PriorityQueue<>(Collections.reverseOrder());
 
-    public  void insertHeap(int x) {
-        maxHeap.add(x);
-        balanceHeaps();
+    public void insertHeap(int x) {
+        if (smallerHalf.size() > greaterHalf.size()) {
+            if (smallerHalf.peek() > x) {
+                greaterHalf.add(smallerHalf.poll());
+                smallerHalf.add(x);
+            } else {
+                greaterHalf.add(x);
+            }
+        } else {
+            if (smallerHalf.isEmpty() || x <= smallerHalf.peek()) {
+                smallerHalf.add(x);
+            } else {
+                greaterHalf.add(x);
+                smallerHalf.add(greaterHalf.poll());
+            }
+        }
     }
 
     //Function to balance heaps.
-    public  void balanceHeaps() {
-        if (maxHeap.size() - minHeap.size() == 2) {
-            int element = maxHeap.poll();
-            minHeap.add(element);
-
-        }
+    public void balanceHeaps() {
         // add your code here
     }
 
     //Function to return Median.
     public double getMedian() {
-        if ((maxHeap.size() + minHeap.size()) % 2 != 0) {
-            return maxHeap.peek();
+        if ((smallerHalf.size() + greaterHalf.size()) % 2 != 0) {
+            return smallerHalf.peek();
         } else {
-            return (maxHeap.peek() + minHeap.peek()) / 2;
+            return (smallerHalf.peek() + greaterHalf.peek()) / 2;
         }
     }
-
 }
