@@ -2,21 +2,24 @@ package dynamic_programming.edit_distance;
 
 public class EditDistance {
 
+    public int memoization(String first, String second) {
+        return memoization(first, second, first.length(), second.length());
+    }
 
-    public int calculate(String first, String second) {
-        if (first.isEmpty()) {
-            return second.length();
+    private int memoization(String first, String second, int m, int n) {
+        if (m == 0) {
+            return n;
         }
-        if (second.isEmpty()) {
-            return first.length();
+        if (n == 0) {
+            return m;
         }
-        if (first.charAt(first.length() - 1) == second.charAt(second.length() - 1)) {
-            return calculate(removeLastChar(first), removeLastChar(second));
+        if (first.charAt(m - 1) == second.charAt(n - 1)) {
+            return memoization(first, second, m - 1, n - 1);
         }
         return 1 + min(
-                calculate(first, removeLastChar(second)),
-                calculate(removeLastChar(first), removeLastChar(second)),
-                calculate(removeLastChar(first), second)
+                memoization(first, second, m, n - 1),
+                memoization(first, second, m - 1, n - 1),
+                memoization(first, second, m - 1, n)
         );
     }
 
@@ -30,26 +33,20 @@ public class EditDistance {
         return c;
     }
 
-    String removeLastChar(String str) {
-        if (str.length() == 1) {
-            return "";
-        }
-        return str.substring(0, str.length() - 1);
-    }
+    public int tabulation(String first, String second) {
+        int m = first.length();
+        int n = second.length();
 
-    public int calculateTabulation(String first, String second) {
-
-        int[][] table = new int[first.length() + 1][second.length() + 1];
-
-        for (int i = 0; i <= second.length(); i++) {
+        int[][] table = new int[m + 1][n + 1];
+        for (int i = 0; i <= n; i++) {
             table[0][i] = i;
         }
-        for (int i = 0; i <= first.length(); i++) {
+        for (int i = 0; i <= m; i++) {
             table[i][0] = i;
         }
 
-        for (int i = 1; i <= first.length(); i++) {
-            for (int j = 1; j <= second.length(); j++) {
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
                 if (first.charAt(i - 1) == second.charAt(j - 1)) {
                     table[i][j] = table[i - 1][j - 1];
                 } else {
@@ -62,7 +59,7 @@ public class EditDistance {
             }
         }
         printTable(table);
-        return table[first.length()][second.length()];
+        return table[m][n];
     }
 
     private void printTable(int[][] table) {
@@ -73,5 +70,4 @@ public class EditDistance {
             System.out.println();
         }
     }
-
 }

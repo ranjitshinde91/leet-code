@@ -15,7 +15,7 @@ class EditDistanceTest {
     void memoization(String first, String second, long expected) {
         var editDistance = new EditDistance();
 
-        int output = editDistance.calculate(first, second);
+        int output = editDistance.memoization(first, second);
 
         assertThat(output).isEqualTo(expected);
     }
@@ -34,7 +34,7 @@ class EditDistanceTest {
     void tabulation(String first, String second, long expected) {
         var editDistance = new EditDistance();
 
-        int output = editDistance.calculateTabulation(first, second);
+        int output = editDistance.tabulation(first, second);
 
         assertThat(output).isEqualTo(expected);
     }
