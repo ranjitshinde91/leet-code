@@ -15,7 +15,7 @@ class LongestCommonSubsequenceTest {
     void memoization(String first, String second, long expected) {
         var longestCommonSubsequence = new LongestCommonSubsequence();
 
-        long output = longestCommonSubsequence.calculate(first, second);
+        long output = longestCommonSubsequence.memoization(first, second);
 
         assertThat(output).isEqualTo(expected);
     }
@@ -25,7 +25,7 @@ class LongestCommonSubsequenceTest {
     void tabulation(String first, String second, long expected) {
         var longestCommonSubsequence = new LongestCommonSubsequence();
 
-        long output = longestCommonSubsequence.calculateTabulation(first, second);
+        long output = longestCommonSubsequence.tabulation(first, second);
 
         assertThat(output).isEqualTo(expected);
     }

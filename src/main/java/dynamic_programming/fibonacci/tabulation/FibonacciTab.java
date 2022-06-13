@@ -3,7 +3,7 @@ package dynamic_programming.fibonacci.tabulation;
 public class FibonacciTab {
 
 
-    public long calculate(long number) {
+    public long tabulation(long number) {
         if (number == 0 || number == 1) {
             return number;
         }

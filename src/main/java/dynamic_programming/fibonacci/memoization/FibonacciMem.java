@@ -10,14 +10,14 @@ public class FibonacciMem {
         this.cache = new HashMap<>();
     }
 
-    public long calculate(long number) {
+    public long memoization(long number) {
         if (this.cache.containsKey(number)) {
             return this.cache.get(number);
         }
         if (number == 0 || number == 1) {
             return number;
         }
-        long result = calculate(number - 1) + calculate(number - 2);
+        long result = memoization(number - 1) + memoization(number - 2);
         this.cache.put(number, result);
         return result;
     }

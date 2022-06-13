@@ -12,11 +12,11 @@ public class LongestCommonSubsequence {
         this.cache = new HashMap<>();
     }
 
-    public long calculate(String first, String second) {
-        return _calculate(first, first.length(), second, second.length());
+    public long memoization(String first, String second) {
+        return _memoization(first, first.length(), second, second.length());
     }
 
-    private Integer _calculate(String first, int m, String second, int n) {
+    private Integer _memoization(String first, int m, String second, int n) {
         if (m == 0 || n == 0) {
             return 0;
         }
@@ -24,11 +24,11 @@ public class LongestCommonSubsequence {
             return cache.get(key(m, n));
         }
         if (first.charAt(m - 1) == second.charAt(n - 1)) {
-            return 1 + _calculate(first, m - 1, second, n - 1);
+            return 1 + _memoization(first, m - 1, second, n - 1);
         }
         int result = Math.max(
-                _calculate(first, m, second, n - 1),
-                _calculate(first, m - 1, second, n)
+                _memoization(first, m, second, n - 1),
+                _memoization(first, m - 1, second, n)
         );
         this.cache.put(key(m, n), result);
         return result;
@@ -39,7 +39,7 @@ public class LongestCommonSubsequence {
     }
 
 
-    public Integer calculateTabulation(String first, String second) {
+    public Integer tabulation(String first, String second) {
         int m = first.length();
         int n = second.length();
 

@@ -13,10 +13,10 @@ class FibonacciMemTabTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    void test1(long number, long expected) {
+    void memoization(long number, long expected) {
         var fibonacci = new FibonacciMem();
 
-        long output = fibonacci.calculate(number);
+        long output = fibonacci.memoization(number);
 
         assertThat(output).isEqualTo(expected);
     }
