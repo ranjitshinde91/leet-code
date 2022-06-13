@@ -12,10 +12,10 @@ class CoinChangeTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    void test1(int[] coins, int sum, int expected) {
+    void memoization(int[] coins, int sum, int expected) {
         var coinChange = new CoinChange();
 
-        int output = coinChange.calculate(coins, sum);
+        int output = coinChange.memoization(coins, sum);
 
         assertThat(output).isEqualTo(expected);
     }
@@ -25,7 +25,7 @@ class CoinChangeTest {
     void tabulation(int[] coins, int sum, int expected) {
         var coinChange = new CoinChange();
 
-        int output = coinChange.calculateTabulation(coins, sum);
+        int output = coinChange.tabulation(coins, sum);
 
         assertThat(output).isEqualTo(expected);
     }

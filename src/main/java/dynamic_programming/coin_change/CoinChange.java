@@ -10,11 +10,11 @@ public class CoinChange {
         cache = new HashMap<>();
     }
 
-    public int calculate(int[] coins, int sum) {
-        return _calculate(coins, coins.length, sum);
+    public int memoization(int[] coins, int sum) {
+        return _memoization(coins, coins.length, sum);
     }
 
-    private int _calculate(int[] coins, int n, int sum) {
+    private int _memoization(int[] coins, int n, int sum) {
         if (sum == 0) {
             return 1;
         }
@@ -25,9 +25,9 @@ public class CoinChange {
             System.out.println("getting from cache for " + n + " with sum : " + sum);
             cache.get(key(n, sum));
         }
-        int res = _calculate(coins, n - 1, sum);
+        int res = _memoization(coins, n - 1, sum);
         if (coins[n - 1] <= sum) {
-            res = res + _calculate(coins, n, sum - coins[n - 1]);
+            res = res + _memoization(coins, n, sum - coins[n - 1]);
         }
         cache.put(key(n, sum), res);
         return res;
@@ -37,7 +37,7 @@ public class CoinChange {
         return n + ":" + sum;
     }
 
-    public int calculateTabulation(int[] coins, int sum) {
+    public int tabulation(int[] coins, int sum) {
         return _calculateTabulation(coins, coins.length, sum);
     }
 
