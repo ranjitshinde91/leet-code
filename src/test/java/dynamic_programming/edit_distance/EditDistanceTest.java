@@ -39,4 +39,14 @@ class EditDistanceTest {
         assertThat(output).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @MethodSource("inputs")
+    void tabulationWithSpaceOptimization(String first, String second, long expected) {
+        var editDistance = new EditDistance();
+
+        int output = editDistance.tabulationWithSpaceOptimization(first, second);
+
+        assertThat(output).isEqualTo(expected);
+    }
+
 }

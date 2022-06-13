@@ -58,16 +58,48 @@ public class EditDistance {
                 }
             }
         }
-        printTable(table);
+        printTable(table, m, n);
         return table[m][n];
     }
 
-    private void printTable(int[][] table) {
-        for (int[] row : table) {
-            for (int i : row) {
-                System.out.print(i + "  ");
+    private void printTable(int[][] table, int m, int n) {
+        for (int i = 0; i <= m; i++) {
+            for (int j = 0; j <= n; j++) {
+                System.out.print(table[i][j] + "  ");
             }
             System.out.println();
         }
+    }
+
+    public int tabulationWithSpaceOptimization(String first, String second) {
+        int m = first.length();
+        int n = second.length();
+
+        int[][] table = new int[2][n + 1];
+        for (int i = 0; i <= n; i++) {
+            table[0][i] = i;
+        }
+
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (first.charAt(i - 1) == second.charAt(j - 1)) {
+                    table[1][j] = table[0][j - 1];
+                } else {
+                    table[1][j] = 1 + min(
+                            table[1][j - 1],
+                            table[0][j - 1],
+                            table[0][j]
+                    );
+                }
+            }
+            table[0][0] = i;
+            table[1][0] = i + 1;
+            for (int k = 1; k <= n; k++) {
+                table[0][k] = table[1][k];
+                table[1][k] = 0;
+            }
+        }
+        printTable(table, 1, n);
+        return table[0][n];
     }
 }
