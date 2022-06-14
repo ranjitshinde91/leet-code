@@ -12,7 +12,7 @@ public class LongestIncreasingSubsequence {
         int tailIndex = 1;
         lis[0] = input[0];
         for (int i = 1; i < m; i++) {
-            if (input[i] > lis[tailIndex-1]) {
+            if (input[i] > lis[tailIndex - 1]) {
                 lis[tailIndex] = input[i];
                 tailIndex = tailIndex + 1;
             } else {
@@ -48,23 +48,16 @@ public class LongestIncreasingSubsequence {
 
         for (int i = 1; i < m; i++) {
             lis[i] = 1;
-            int smallerIndex = 0;
-
-            while (smallerIndex < i) {
-                if (input[smallerIndex] < input[i]) {
-                    if (lis[i] <= lis[smallerIndex]) {
-                        lis[i] = 1 + lis[smallerIndex];
-                    }
+            for (int j = 0; j < i; j++) {
+                if (input[j] < input[i]) {
+                    lis[i] =  Math.max(lis[i], lis[j]+1);
                 }
-                smallerIndex++;
             }
         }
 
-        int longestIncreasingSequence = 0;
-        for (int e : lis) {
-            if (longestIncreasingSequence < e) {
-                longestIncreasingSequence = e;
-            }
+        int longestIncreasingSequence = lis[0];
+        for (int i = 1; i < lis.length; i++) {
+            longestIncreasingSequence = Math.max(longestIncreasingSequence, lis[i]);
         }
         return longestIncreasingSequence;
     }

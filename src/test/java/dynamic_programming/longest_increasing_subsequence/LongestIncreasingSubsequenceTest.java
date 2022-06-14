@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LongestIncreasingSubsequenceTest {
     @ParameterizedTest
     @MethodSource("inputs")
-    void memoization(int[] input, int expected) {
+    void binarySearchTreeBased(int[] input, int expected) {
         var longestIncreasingSubsequence = new LongestIncreasingSubsequence();
 
         long output = longestIncreasingSubsequence.binarySearchTreeBased(input);
