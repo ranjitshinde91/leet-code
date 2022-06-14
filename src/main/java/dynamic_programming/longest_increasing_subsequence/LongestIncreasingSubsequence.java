@@ -27,7 +27,7 @@ public class LongestIncreasingSubsequence {
         int l = start;
         int r = end;
         while (r > l) {
-            int mid = (r - l) / 2;
+            int mid = l + (r - l) / 2;
             if (lis[mid] >= value) {
                 r = mid;
             } else {
@@ -49,7 +49,7 @@ public class LongestIncreasingSubsequence {
             lis[i] = 1;
             for (int j = 0; j < i; j++) {
                 if (input[j] < input[i]) {
-                    lis[i] =  Math.max(lis[i], lis[j]+1);
+                    lis[i] = Math.max(lis[i], lis[j] + 1);
                 }
             }
         }
