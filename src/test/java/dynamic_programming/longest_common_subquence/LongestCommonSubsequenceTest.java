@@ -1,4 +1,4 @@
-package dynamic_programming.lonest_common_subquence;
+package dynamic_programming.longest_common_subquence;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

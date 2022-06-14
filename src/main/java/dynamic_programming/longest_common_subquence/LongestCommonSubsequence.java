@@ -1,4 +1,4 @@
-package dynamic_programming.lonest_common_subquence;
+package dynamic_programming.longest_common_subquence;
 
 import java.util.HashMap;
 import java.util.Map;
