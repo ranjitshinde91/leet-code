@@ -1,6 +1,5 @@
 package dynamic_programming.maximum_cuts;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +16,6 @@ public class MaximumCuts {
     }
 
     private int _memoization(int[] sizes, int m, int n) {
-        System.out.println("m = " + m + " n = " + n);
         if (n == 0) {
             return 0;
         }
@@ -79,28 +77,6 @@ public class MaximumCuts {
             }
             System.out.println();
         }
-    }
-
-    public long tabulationForThreeSizes(int n, int a, int b, int c) {
-        int[] list = new int[n + 1];
-        list[0] = 0;
-        for (int i = 1; i <= n; i++) {
-            list[i] = -1;
-
-            if (i - a >= 0) {
-                list[i] = Math.max(list[i], list[i - a]);
-            }
-            if (i - b >= 0) {
-                list[i] = Math.max(list[i], list[i - b]);
-            }
-            if (i - c >= 0) {
-                list[i] = Math.max(list[i], list[i - c]);
-            }
-            if (list[i] != -1) {
-                list[i] = list[i] + 1;
-            }
-        }
-        return list[n];
     }
 
 }

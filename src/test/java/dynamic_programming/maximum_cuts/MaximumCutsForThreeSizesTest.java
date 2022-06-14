@@ -8,14 +8,14 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MaximumCutsTest {
+class MaximumCutsForThreeSizesTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
     void memoization(int[] sizes, int rodSize, int expected) {
-        var maximumCuts = new MaximumCuts();
+        var maximumCutsForThreeSizes = new MaximumCutsForThreeSizes();
 
-        int output = maximumCuts.memoization(sizes, rodSize);
+        int output = maximumCutsForThreeSizes.memoization(rodSize, sizes[0], sizes[1], sizes[2]);
 
         assertThat(output).isEqualTo(expected);
     }
@@ -23,9 +23,9 @@ class MaximumCutsTest {
     @ParameterizedTest
     @MethodSource("inputs")
     void tabulation(int[] sizes, int rodSize, int expected) {
-        var maximumCuts = new MaximumCuts();
+        var maximumCutsForThreeSizes = new MaximumCutsForThreeSizes();
 
-        long output = maximumCuts.tabulation(sizes, rodSize);
+        long output = maximumCutsForThreeSizes.tabulation(rodSize, sizes[0], sizes[1], sizes[2]);
 
         assertThat(output).isEqualTo(expected);
     }
