@@ -7,17 +7,16 @@ public class LongestIncreasingSubsequence {
     }
 
     private int _binarySearchTreeBased(int[] input, int m) {
-        int[] lis = new int[m];
-
+        int[] tail = new int[m];
         int tailIndex = 1;
-        lis[0] = input[0];
+        tail[0] = input[0];
         for (int i = 1; i < m; i++) {
-            if (input[i] > lis[tailIndex - 1]) {
-                lis[tailIndex] = input[i];
+            if (input[i] > tail[tailIndex - 1]) {
+                tail[tailIndex] = input[i];
                 tailIndex = tailIndex + 1;
             } else {
-                int ceilIndex = ceilIndex(lis, 0, tailIndex - 1, input[i]);
-                lis[ceilIndex] = input[i];
+                int ceilIndex = ceilIndex(tail, 0, tailIndex - 1, input[i]);
+                tail[ceilIndex] = input[i];
             }
         }
         return tailIndex;
