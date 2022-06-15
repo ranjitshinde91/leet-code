@@ -44,7 +44,8 @@ class MinimumCoinsToMakeAValueTest {
         return Stream.of(
                 Arguments.of(new int[]{25, 10, 5}, 30, 2),
                 Arguments.of(new int[]{9, 6, 5, 1}, 11, 2),
-                Arguments.of(new int[]{9, 6, 5, 1}, 11, 2)
+                Arguments.of(new int[]{9, 6, 5, 1}, 11, 2),
+                Arguments.of(new int[]{9, 6, 5}, 4, Integer.MAX_VALUE)
         );
     }
 
