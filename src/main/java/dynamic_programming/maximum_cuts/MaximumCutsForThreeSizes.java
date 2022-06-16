@@ -71,6 +71,9 @@ public class MaximumCutsForThreeSizes {
             }
         }
         printTable(list, n);
+        if (list[n] == -1) {
+            return 0;
+        }
         return list[n];
     }
 }

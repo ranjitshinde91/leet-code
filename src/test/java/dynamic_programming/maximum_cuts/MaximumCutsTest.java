@@ -34,6 +34,8 @@ class MaximumCutsTest {
         return Stream.of(
                 Arguments.of(new int[]{1, 2, 3}, 5, 5),
                 Arguments.of(new int[]{6, 2, 3}, 5, 2),
+                Arguments.of(new int[]{5, 3, 2}, 5, 2),
+                Arguments.of(new int[]{94, 20, 244}, 9999, -1),
                 Arguments.of(new int[]{12, 11, 13}, 23, 2),
                 Arguments.of(new int[]{2, 4, 2}, 3, -1),
                 Arguments.of(new int[]{10, 20, 50}, 100, 10),
