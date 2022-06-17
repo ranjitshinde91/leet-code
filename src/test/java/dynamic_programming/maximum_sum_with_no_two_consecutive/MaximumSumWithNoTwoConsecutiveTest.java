@@ -34,8 +34,8 @@ class MaximumSumWithNoTwoConsecutiveTest {
         return Stream.of(
                 Arguments.of(new int[]{1, 10, 2}, 10),
                 Arguments.of(new int[]{8, 7, 6, 10}, 18),
-                Arguments.of(new int[]{10, 5, 15, 20, 2, 30}, 60)
+                Arguments.of(new int[]{10, 5, 15, 20, 2, 30}, 60),
+                Arguments.of(new int[]{10, 20, 30, 40, 50}, 90)
         );
     }
-
 }
