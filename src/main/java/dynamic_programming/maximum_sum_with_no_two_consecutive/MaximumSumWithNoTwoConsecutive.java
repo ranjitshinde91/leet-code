@@ -35,22 +35,16 @@ public class MaximumSumWithNoTwoConsecutive {
 
     public int tabulation(int[] inputs) {
         int n = inputs.length;
-        int[] table = new int[n + 1];
-        table[0] = 0;
-        table[1] = inputs[0];
+        int secondLast = 0;
+        int last = inputs[0];
         for (int i = 2; i <= n; i++) {
-            table[i] = Math.max(
-                    table[i - 2] + inputs[i - 1],
-                    table[i - 1]
+            int temp = Math.max(
+                    secondLast + inputs[i - 1],
+                    last
             );
+            secondLast = last;
+            last = temp;
         }
-        printTable(table, n);
-        return table[n];
-    }
-
-    private void printTable(int[] table, int n) {
-        for (int j = 0; j <= n; j++) {
-            System.out.print(table[j] + "  ");
-        }
+        return last;
     }
 }
