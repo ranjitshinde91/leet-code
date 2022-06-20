@@ -12,7 +12,7 @@ class MatrixChainMultiplicationTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    void test1(int[] input, int expected) {
+    void memoization(int[] input, int expected) {
         var matrixChainMultiplication = new MatrixChainMultiplication();
 
         var output = matrixChainMultiplication.memoization(input);

@@ -41,16 +41,17 @@ public class MatrixChainMultiplication {
         int n = inputs.length;
         int[][] table = new int[n][n];
 
-        for (int i = 0; i < n - 2; i++) {
+        for (int i = 0; i < n - 1; i++) {
             table[i][i + 1] = 0;
         }
         for (int gap = 2; gap < n; gap++) {
             for (int i = 0; i + gap < n; i++) {
-                table[i][i + gap] = Integer.MAX_VALUE;
-                for (int k = i + 1; k < i + gap; k++) {
-                    table[i][i + gap] = Math.min(
-                            table[i][i + gap],
-                            table[i][k] + table[k][i + gap] + inputs[i] * inputs[k] * inputs[i + gap]
+                int j = i + gap;
+                table[i][j] = Integer.MAX_VALUE;
+                for (int k = i + 1; k < j; k++) {
+                    table[i][j] = Math.min(
+                            table[i][j],
+                            table[i][k] + table[k][j] + inputs[i] * inputs[k] * inputs[j]
                     );
                 }
             }
