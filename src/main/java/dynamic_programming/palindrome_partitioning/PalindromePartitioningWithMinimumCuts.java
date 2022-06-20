@@ -18,9 +18,6 @@ public class PalindromePartitioningWithMinimumCuts {
         if (isPalindrome(word, start, end)) {
             return 0;
         }
-        if (start + 1 == end) {
-            return 1;
-        }
         if (cache.containsKey(key(start, end))) {
             System.out.println("retrieving from cache " + start + " : " + end);
             return cache.get(key(start, end));
@@ -43,12 +40,10 @@ public class PalindromePartitioningWithMinimumCuts {
         int n = word.length();
         int[][] table = new int[n][n];
 
-        for (int i = 0; i < n - 1; i++) {
-            if (word.charAt(i) != word.charAt(i + 1)) {
-                table[i][i + 1] = 1;
-            }
+        for (int i = 0; i < n; i++) {
+            table[i][i] = 0;
         }
-        for (int gap = 2; gap < n; gap++) {
+        for (int gap = 1; gap < n; gap++) {
             for (int i = 0; i + gap < n; i++) {
                 int j = i + gap;
                 if (isPalindrome(word, i, j)) {
