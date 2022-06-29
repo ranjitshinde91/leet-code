@@ -40,4 +40,27 @@ public class LeftViewOfABinaryTree {
         }
         return list;
     }
+
+    ArrayList<Integer> leftViewRecursive(TreeNode root) {
+        ArrayList<Integer> list = new ArrayList<>();
+        if (root == null) {
+            return list;
+        }
+
+        _leftView(root, list, 1);
+        return list;
+    }
+
+    private void _leftView(TreeNode node, ArrayList<Integer> list, int level) {
+        if (list.size() < level) {
+            list.add(node.val);
+        }
+
+        if (node.left != null) {
+            _leftView(node.left, list, level + 1);
+        }
+        if (node.right != null) {
+            _leftView(node.right, list, level + 1);
+        }
+    }
 }
