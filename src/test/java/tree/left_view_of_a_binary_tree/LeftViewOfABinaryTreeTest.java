@@ -1,4 +1,4 @@
-package tree.left_view_of_a_tree;
+package tree.left_view_of_a_binary_tree;
 
 import org.junit.jupiter.api.Test;
 import tree.TreeNode;
