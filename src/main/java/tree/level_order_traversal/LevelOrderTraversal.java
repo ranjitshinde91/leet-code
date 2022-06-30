@@ -6,7 +6,7 @@ import java.util.*;
 
 import static tree.TreeNode.NULL_NODE;
 
-class LevelOrderTraversal {
+public class LevelOrderTraversal {
     public List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null) {
             return Collections.emptyList();
