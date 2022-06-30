@@ -35,4 +35,22 @@ public class BinaryTreeToDLL {
         queue.add(node);
         inOrderTraversal(queue, node.right);
     }
+
+    private TreeNode previous = null;
+
+    TreeNode recursive(TreeNode root) {
+        if (root == null) {
+            return root;
+        }
+        TreeNode head = recursive(root.left);
+        if (previous == null) {
+            head = root;
+        } else {
+            root.left = previous;
+            previous.right = root;
+        }
+        previous = root;
+        recursive(root.right);
+        return head;
+    }
 }
