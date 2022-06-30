@@ -7,7 +7,7 @@ public class TreeFromPostOrderAndInOrder {
     private int[] post;
     private int n;
 
-    TreeNode buildTree(int[] in, int[] post, int n) {
+    TreeNode iterative(int[] in, int[] post, int n) {
         this.in = in;
         this.post = post;
         this.n = n;
@@ -48,6 +48,32 @@ public class TreeFromPostOrderAndInOrder {
             }
         }
         return Position.R;
+    }
+
+    private int preIndex;
+
+    public TreeNode recursive(int[] in, int[] post, int length) {
+        preIndex = length - 1;
+        return _recursive(in, post, 0, length - 1);
+    }
+
+    private TreeNode _recursive(int[] in, int[] post, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+
+        TreeNode root = new TreeNode(post[preIndex--]);
+
+        int inIndex = 0;
+        for (int i = start; i <= end; i++) {
+            if (in[i] == root.val) {
+                inIndex = i;
+                break;
+            }
+        }
+        root.right = _recursive(in, post, inIndex + 1, end);
+        root.left = _recursive(in, post, start, inIndex - 1);
+        return root;
     }
 }
 

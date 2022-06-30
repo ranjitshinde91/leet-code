@@ -11,13 +11,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 class TreeFromPostOrderAndInOrderTest {
 
     @Test
-    void treeFromPostOrderAndInOrder() {
+    void iterative() {
         TreeFromPostOrderAndInOrder treeFromPostOrderAndInOrder = new TreeFromPostOrderAndInOrder();
 
         int[] in = new int[]{4, 8, 2, 5, 1, 6, 3, 7};
         int[] post = new int[]{8, 4, 5, 2, 6, 7, 3, 1};
 
-        TreeNode treeNode = treeFromPostOrderAndInOrder.buildTree(in, post, in.length);
+        TreeNode treeNode = treeFromPostOrderAndInOrder.iterative(in, post, in.length);
+
+        assertThat(levelOrderTraversal(treeNode)).containsExactlyElementsOf(
+                List.of(
+                        List.of(1),
+                        List.of(2, 3),
+                        List.of(4, 5, 6, 7),
+                        List.of(8)
+                )
+        );
+    }
+
+    @Test
+    void recursive() {
+        TreeFromPostOrderAndInOrder treeFromPostOrderAndInOrder = new TreeFromPostOrderAndInOrder();
+
+        int[] in = new int[]{4, 8, 2, 5, 1, 6, 3, 7};
+        int[] post = new int[]{8, 4, 5, 2, 6, 7, 3, 1};
+
+        TreeNode treeNode = treeFromPostOrderAndInOrder.recursive(in, post, in.length);
 
         assertThat(levelOrderTraversal(treeNode)).containsExactlyElementsOf(
                 List.of(
