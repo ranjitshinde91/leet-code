@@ -25,15 +25,15 @@ class BinaryTreeToDLLTest {
 
         var root = binaryTreeToDLL.bToDLL(three);
 
-        assertThat(root.val).isEqualTo(9);
+        assertThat(root.data).isEqualTo(9);
         assertThat(root.left).isNull();
         assertThat(root.right).isEqualTo(three);
 
-        assertThat(root.right.val).isEqualTo(3);
+        assertThat(root.right.data).isEqualTo(3);
         assertThat(root.right.left).isEqualTo(nine);
         assertThat(root.right.right).isEqualTo(fifteen);
 
-        assertThat(root.right.right.val).isEqualTo(15);
+        assertThat(root.right.right.data).isEqualTo(15);
         assertThat(root.right.right.left).isEqualTo(three);
         assertThat(root.right.right.right).isEqualTo(twenty);
     }
@@ -56,15 +56,15 @@ class BinaryTreeToDLLTest {
 
         var root = binaryTreeToDLL.recursive(three);
 
-        assertThat(root.val).isEqualTo(9);
+        assertThat(root.data).isEqualTo(9);
         assertThat(root.left).isNull();
         assertThat(root.right).isEqualTo(three);
 
-        assertThat(root.right.val).isEqualTo(3);
+        assertThat(root.right.data).isEqualTo(3);
         assertThat(root.right.left).isEqualTo(nine);
         assertThat(root.right.right).isEqualTo(fifteen);
 
-        assertThat(root.right.right.val).isEqualTo(15);
+        assertThat(root.right.right.data).isEqualTo(15);
         assertThat(root.right.right.left).isEqualTo(three);
         assertThat(root.right.right.right).isEqualTo(twenty);
     }

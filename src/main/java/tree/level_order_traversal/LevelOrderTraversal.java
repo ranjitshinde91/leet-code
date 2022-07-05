@@ -12,7 +12,7 @@ public class LevelOrderTraversal {
             return Collections.emptyList();
         }
         if (root.left == null && root.right == null) {
-            return List.of(List.of(root.val));
+            return List.of(List.of(root.data));
         }
         List<List<Integer>> elements = new ArrayList<>();
 
@@ -28,7 +28,7 @@ public class LevelOrderTraversal {
                       integers = new ArrayList<>();
                       nodes.add(NULL_NODE);
                     }else{
-                     integers.add(poppedNode.val);
+                     integers.add(poppedNode.data);
                      if (poppedNode.left != null) {
                          nodes.add(poppedNode.left);
                      }

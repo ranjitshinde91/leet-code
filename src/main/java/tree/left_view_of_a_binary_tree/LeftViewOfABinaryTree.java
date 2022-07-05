@@ -18,12 +18,12 @@ public class LeftViewOfABinaryTree {
 
         queue.add(root);
         queue.add(null);
-        list.add(root.val);
+        list.add(root.data);
         boolean addNextNode = false;
         while (queue.size() > 1) {
             Node poppedNode = queue.poll();
             if (addNextNode) {
-                list.add(poppedNode.val);
+                list.add(poppedNode.data);
                 addNextNode = false;
             }
             if (poppedNode == null) {
@@ -52,7 +52,7 @@ public class LeftViewOfABinaryTree {
             return;
         }
         if (list.size() < level) {
-            list.add(node.val);
+            list.add(node.data);
         }
         _leftView(node.left, list, level + 1);
         _leftView(node.right, list, level + 1);

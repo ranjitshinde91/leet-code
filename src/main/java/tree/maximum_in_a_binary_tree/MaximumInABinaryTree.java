@@ -9,7 +9,7 @@ public class MaximumInABinaryTree {
             return Integer.MIN_VALUE;
         }
         return Math.max(
-                node.val,
+                node.data,
                 Math.max(
                         max(node.left),
                         max(node.right)

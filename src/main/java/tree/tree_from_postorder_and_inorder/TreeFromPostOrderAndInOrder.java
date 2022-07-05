@@ -17,7 +17,7 @@ public class TreeFromPostOrderAndInOrder {
             int e = this.post[i];
             Node current = root;
             while (current != null) {
-                Position position = position(e, current.val);
+                Position position = position(e, current.data);
                 if (position == Position.L) {
                     if (current.left == null) {
                         current.left = new Node(e);
@@ -66,7 +66,7 @@ public class TreeFromPostOrderAndInOrder {
 
         int inIndex = 0;
         for (int i = start; i <= end; i++) {
-            if (in[i] == root.val) {
+            if (in[i] == root.data) {
                 inIndex = i;
                 break;
             }

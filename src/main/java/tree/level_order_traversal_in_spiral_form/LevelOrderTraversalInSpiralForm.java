@@ -29,7 +29,7 @@ public class LevelOrderTraversalInSpiralForm {
                 if (reverse) {
                     stack.push(poppedNode);
                 } else {
-                    traversal.add(poppedNode.val);
+                    traversal.add(poppedNode.data);
                 }
                 if (poppedNode.left != null) {
                     queue.add(poppedNode.left);
@@ -40,7 +40,7 @@ public class LevelOrderTraversalInSpiralForm {
             }
             if (reverse) {
                 while (!stack.isEmpty()) {
-                    traversal.add(stack.pop().val);
+                    traversal.add(stack.pop().data);
                 }
             }
             reverse = !reverse;
