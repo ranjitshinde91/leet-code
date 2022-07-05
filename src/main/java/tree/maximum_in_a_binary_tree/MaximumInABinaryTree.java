@@ -1,10 +1,10 @@
 package tree.maximum_in_a_binary_tree;
 
-import tree.TreeNode;
+import tree.Node;
 
 public class MaximumInABinaryTree {
 
-    public int max(TreeNode node) {
+    public int max(Node node) {
         if (node == null) {
             return Integer.MIN_VALUE;
         }

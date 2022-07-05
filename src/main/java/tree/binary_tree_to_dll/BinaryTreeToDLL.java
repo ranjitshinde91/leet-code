@@ -1,23 +1,23 @@
 package tree.binary_tree_to_dll;
 
-import tree.TreeNode;
+import tree.Node;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BinaryTreeToDLL {
 
-    TreeNode bToDLL(TreeNode root) {
+    Node bToDLL(Node root) {
         if (root == null) {
             return root;
         }
-        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<Node> queue = new LinkedList<>();
         inOrderTraversal(queue, root);
-        TreeNode head = queue.poll();
-        TreeNode lastNode = head;
+        Node head = queue.poll();
+        Node lastNode = head;
 
         while (!queue.isEmpty()) {
-            TreeNode temp = queue.poll();
+            Node temp = queue.poll();
 
             lastNode.right = temp;
             temp.left = lastNode;
@@ -27,7 +27,7 @@ public class BinaryTreeToDLL {
         return head;
     }
 
-    private void inOrderTraversal(Queue<TreeNode> queue, TreeNode node) {
+    private void inOrderTraversal(Queue<Node> queue, Node node) {
         if (node == null) {
             return;
         }
@@ -36,13 +36,13 @@ public class BinaryTreeToDLL {
         inOrderTraversal(queue, node.right);
     }
 
-    private TreeNode previous = null;
+    private Node previous = null;
 
-    TreeNode recursive(TreeNode root) {
+    Node recursive(Node root) {
         if (root == null) {
             return root;
         }
-        TreeNode head = recursive(root.left);
+        Node head = recursive(root.left);
         if (previous == null) {
             head = root;
         } else {

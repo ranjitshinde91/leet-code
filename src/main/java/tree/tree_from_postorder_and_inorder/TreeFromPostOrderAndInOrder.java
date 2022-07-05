@@ -1,33 +1,33 @@
 package tree.tree_from_postorder_and_inorder;
 
-import tree.TreeNode;
+import tree.Node;
 
 public class TreeFromPostOrderAndInOrder {
     private int[] in;
     private int[] post;
     private int n;
 
-    TreeNode iterative(int[] in, int[] post, int n) {
+    Node iterative(int[] in, int[] post, int n) {
         this.in = in;
         this.post = post;
         this.n = n;
 
-        TreeNode root = new TreeNode(post[n - 1]);
+        Node root = new Node(post[n - 1]);
         for (int i = n - 2; i >= 0; i--) {
             int e = this.post[i];
-            TreeNode current = root;
+            Node current = root;
             while (current != null) {
                 Position position = position(e, current.val);
                 if (position == Position.L) {
                     if (current.left == null) {
-                        current.left = new TreeNode(e);
+                        current.left = new Node(e);
                         current = null;
                     } else {
                         current = current.left;
                     }
                 } else {
                     if (current.right == null) {
-                        current.right = new TreeNode(e);
+                        current.right = new Node(e);
                         current = null;
                     } else {
                         current = current.right;
@@ -52,17 +52,17 @@ public class TreeFromPostOrderAndInOrder {
 
     private int preIndex;
 
-    public TreeNode recursive(int[] in, int[] post, int length) {
+    public Node recursive(int[] in, int[] post, int length) {
         preIndex = length - 1;
         return _recursive(in, post, 0, length - 1);
     }
 
-    private TreeNode _recursive(int[] in, int[] post, int start, int end) {
+    private Node _recursive(int[] in, int[] post, int start, int end) {
         if (start > end) {
             return null;
         }
 
-        TreeNode root = new TreeNode(post[preIndex--]);
+        Node root = new Node(post[preIndex--]);
 
         int inIndex = 0;
         for (int i = start; i <= end; i++) {

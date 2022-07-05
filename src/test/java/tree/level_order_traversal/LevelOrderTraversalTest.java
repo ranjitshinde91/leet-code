@@ -1,7 +1,7 @@
 package tree.level_order_traversal;
 
 import org.junit.jupiter.api.Test;
-import tree.TreeNode;
+import tree.Node;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ class LevelOrderTraversalTest {
     @Test
     void test2() {
         var solution = new LevelOrderTraversal();
-        var treeNode = new TreeNode(1);
+        var treeNode = new Node(1);
 
         List<List<Integer>> lists = solution.levelOrder(treeNode);
 
@@ -31,11 +31,11 @@ class LevelOrderTraversalTest {
     @Test
     void test3() {
         var solution = new LevelOrderTraversal();
-        var three = new TreeNode(3);
-        var nine = new TreeNode(9);
-        var twenty = new TreeNode(20);
-        var fifteen = new TreeNode(15);
-        var seven = new TreeNode(7);
+        var three = new Node(3);
+        var nine = new Node(9);
+        var twenty = new Node(20);
+        var fifteen = new Node(15);
+        var seven = new Node(7);
 
         twenty.left = fifteen;
         twenty.right = seven;

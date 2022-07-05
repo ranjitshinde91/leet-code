@@ -1,7 +1,7 @@
 package tree.binary_tree_to_dll;
 
 import org.junit.jupiter.api.Test;
-import tree.TreeNode;
+import tree.Node;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,11 +9,11 @@ class BinaryTreeToDLLTest {
 
     @Test
     void iterative() {
-        var three = new TreeNode(3);
-        var nine = new TreeNode(9);
-        var twenty = new TreeNode(20);
-        var fifteen = new TreeNode(15);
-        var seven = new TreeNode(7);
+        var three = new Node(3);
+        var nine = new Node(9);
+        var twenty = new Node(20);
+        var fifteen = new Node(15);
+        var seven = new Node(7);
 
         twenty.left = fifteen;
         twenty.right = seven;
@@ -40,11 +40,11 @@ class BinaryTreeToDLLTest {
 
     @Test
     void recursive() {
-        var three = new TreeNode(3);
-        var nine = new TreeNode(9);
-        var twenty = new TreeNode(20);
-        var fifteen = new TreeNode(15);
-        var seven = new TreeNode(7);
+        var three = new Node(3);
+        var nine = new Node(9);
+        var twenty = new Node(20);
+        var fifteen = new Node(15);
+        var seven = new Node(7);
 
         twenty.left = fifteen;
         twenty.right = seven;

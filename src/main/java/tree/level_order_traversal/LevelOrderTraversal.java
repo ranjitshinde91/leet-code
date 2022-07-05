@@ -1,13 +1,13 @@
 package tree.level_order_traversal;
 
-import tree.TreeNode;
+import tree.Node;
 
 import java.util.*;
 
-import static tree.TreeNode.NULL_NODE;
+import static tree.Node.NULL_NODE;
 
 public class LevelOrderTraversal {
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> levelOrder(Node root) {
         if (root == null) {
             return Collections.emptyList();
         }
@@ -16,24 +16,24 @@ public class LevelOrderTraversal {
         }
         List<List<Integer>> elements = new ArrayList<>();
 
-        Queue<TreeNode> treeNodes = new LinkedList<TreeNode>();
-        treeNodes.add(root);
-        treeNodes.add(NULL_NODE);
+        Queue<Node> nodes = new LinkedList<Node>();
+        nodes.add(root);
+        nodes.add(NULL_NODE);
 
         ArrayList<Integer> integers = new ArrayList<>();
-        while (!treeNodes.isEmpty()) {
-                TreeNode poppedNode = treeNodes.poll();
+        while (!nodes.isEmpty()) {
+                Node poppedNode = nodes.poll();
                  if(poppedNode == NULL_NODE && !integers.isEmpty()){
                       elements.add(integers);
                       integers = new ArrayList<>();
-                      treeNodes.add(NULL_NODE);
+                      nodes.add(NULL_NODE);
                     }else{
                      integers.add(poppedNode.val);
                      if (poppedNode.left != null) {
-                         treeNodes.add(poppedNode.left);
+                         nodes.add(poppedNode.left);
                      }
                      if (poppedNode.right != null) {
-                         treeNodes.add(poppedNode.right);
+                         nodes.add(poppedNode.right);
                      }
                  }
         }

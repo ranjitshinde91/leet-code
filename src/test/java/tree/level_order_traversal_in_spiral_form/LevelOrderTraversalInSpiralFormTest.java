@@ -1,7 +1,7 @@
 package tree.level_order_traversal_in_spiral_form;
 
 import org.junit.jupiter.api.Test;
-import tree.TreeNode;
+import tree.Node;
 
 import java.util.List;
 
@@ -11,11 +11,11 @@ class LevelOrderTraversalInSpiralFormTest {
 
     @Test
     void iterative() {
-        var three = new TreeNode(3);
-        var nine = new TreeNode(9);
-        var twenty = new TreeNode(20);
-        var fifteen = new TreeNode(15);
-        var seven = new TreeNode(7);
+        var three = new Node(3);
+        var nine = new Node(9);
+        var twenty = new Node(20);
+        var fifteen = new Node(15);
+        var seven = new Node(7);
 
         twenty.left = fifteen;
         twenty.right = seven;

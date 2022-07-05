@@ -1,10 +1,10 @@
 package tree.size_of_a_binary_tree;
 
-import tree.TreeNode;
+import tree.Node;
 
 public class SizeOfABinaryTree {
 
-    public int size(TreeNode node) {
+    public int size(Node node) {
         if (node == null) {
             return 0;
         }
