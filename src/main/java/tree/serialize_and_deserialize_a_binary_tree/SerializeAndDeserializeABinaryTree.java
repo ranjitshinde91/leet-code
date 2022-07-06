@@ -3,8 +3,6 @@ package tree.serialize_and_deserialize_a_binary_tree;
 import tree.Node;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class SerializeAndDeserializeABinaryTree {
 
