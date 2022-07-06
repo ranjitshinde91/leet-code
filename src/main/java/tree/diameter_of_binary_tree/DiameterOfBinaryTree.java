@@ -13,19 +13,19 @@ public class DiameterOfBinaryTree {
         }
         Pair left = _diameter(root.left);
         Pair right = _diameter(root.right);
-        int diameter = 1 + left.maxLength + right.maxLength;
+        int diameter = 1 + left.height + right.height;
         return new Pair(Math.max(Math.max(left.diameter, diameter), right.diameter),
-                1 + Math.max(left.maxLength, right.maxLength));
+                1 + Math.max(left.height, right.height));
     }
 
 }
 
 class Pair {
     public int diameter;
-    public int maxLength;
+    public int height;
 
-    public Pair(int diameter, int maxLength) {
+    public Pair(int diameter, int height) {
         this.diameter = diameter;
-        this.maxLength = maxLength;
+        this.height = height;
     }
 }
