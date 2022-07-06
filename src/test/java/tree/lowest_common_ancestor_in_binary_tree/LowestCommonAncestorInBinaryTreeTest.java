@@ -31,5 +31,8 @@ class LowestCommonAncestorInBinaryTreeTest {
 
         var ancestor3 = lowestCommonAncestorInBinaryTree.lca(three, 20, 7);
         assertThat(ancestor3.data).isEqualTo(20);
+
+        var ancestor4 = lowestCommonAncestorInBinaryTree.lca(three, 20, 40);
+        assertThat(ancestor4).isNull();
     }
 }
