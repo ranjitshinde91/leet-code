@@ -5,11 +5,7 @@ import tree.Node;
 public class LowestCommonAncestorInBinaryTree {
 
     Node lca(Node root, int n1, int n2) {
-        Result result = _lca(root, n1, n2);
-        if (result.firstFound && result.secondFound) {
-            return result.ancestor;
-        }
-        return null;
+        return _lca(root, n1, n2).ancestor;
     }
 
     private Result _lca(Node root, int n1, int n2) {
@@ -17,22 +13,36 @@ public class LowestCommonAncestorInBinaryTree {
             return new Result();
         }
         Result leftResult = _lca(root.left, n1, n2);
-        if (leftResult.firstFound && leftResult.secondFound) {
+        if (leftResult.isAncestor()) {
             return leftResult;
         }
         Result rightResult = _lca(root.right, n1, n2);
-        if (rightResult.firstFound && rightResult.secondFound) {
+        if (rightResult.isAncestor()) {
             return rightResult;
         }
-        if ((leftResult.firstFound && rightResult.secondFound) ||
-                (leftResult.secondFound && rightResult.firstFound)) {
+        if (isCurrentNodeAncestor(root, n1, n2, leftResult, rightResult)) {
             return Result.found(root);
         }
         return new Result(
                 n1 == root.data || leftResult.firstFound || rightResult.firstFound,
-                n2 == root.data || leftResult.secondFound || rightResult.secondFound,
-                root
+                n2 == root.data || leftResult.secondFound || rightResult.secondFound
         );
+    }
+
+    private boolean isCurrentNodeAncestor(Node root, int n1, int n2, Result leftResult, Result rightResult) {
+        if (leftResult.firstFound && rightResult.secondFound) {
+            return true;
+        }
+        if (leftResult.secondFound && rightResult.firstFound) {
+            return true;
+        }
+        if (n1 == root.data && (leftResult.secondFound || rightResult.secondFound)) {
+            return true;
+        }
+        if (n2 == root.data && (leftResult.firstFound || rightResult.firstFound)) {
+            return true;
+        }
+        return false;
     }
 }
 
@@ -50,8 +60,16 @@ class Result {
         this.ancestor = ancestor;
     }
 
+    public Result(boolean firstFound, boolean secondFound) {
+        this(firstFound, secondFound, null);
+    }
+
     public static Result found(Node root) {
         return new Result(true, true, root);
+    }
+
+    public boolean isAncestor() {
+        return this.firstFound && this.secondFound;
     }
 
 }
