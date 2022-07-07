@@ -1,4 +1,4 @@
-package java2.collections.queue;
+package java2.collections.heap;
 
 import java2.collections.Student;
 
