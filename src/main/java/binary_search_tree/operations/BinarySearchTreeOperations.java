@@ -36,19 +36,29 @@ public class BinarySearchTreeOperations {
         } else if (x > root.data) {
             root.right = deleteNode(root.right, x);
         } else {
-            if (root.left == null && root.right == null) {
-                return null;
-            } else if (root.left != null) {
-                Node node = inOrderPredecessor(root.left);
-                root.data = node.data;
-                root.left = deleteNode(root.left, node.data);
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
             } else {
-                Node node = inorderSuccessor(root.right);
-                root.data = node.data;
-                root.right = deleteNode(root.right, node.data);
+                if (height(root.left) > height(root.right)) {
+                    Node node = inOrderPredecessor(root.left);
+                    root.data = node.data;
+                    root.left = deleteNode(root.left, node.data);
+                }else{
+                    Node node = inorderSuccessor(root.right);
+                    root.data = node.data;
+                    root.right = deleteNode(root.right, node.data);
+                }
             }
         }
         return root;
+    }
+
+    private int height(Node node) {
+        if (node == null) {
+            return 0;
+        } else return 1 + Math.max(height(node.left), height(node.right));
     }
 
     private static Node inorderSuccessor(Node node) {

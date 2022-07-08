@@ -44,4 +44,23 @@ class BinarySearchTreeOperationsTest {
         assertThat(root.left).isNull();
     }
 
+    @Test
+    void deleteWithHeightConsideration() {
+        var three = new Node(3);
+        Node four = new Node(4);
+
+        four.right = new Node(5);
+
+        three.left = new Node(2);
+        three.right = four;
+
+        var operations = new BinarySearchTreeOperations();
+
+        Node root = operations.deleteNode(three, 3);
+
+        assertThat(root.data).isEqualTo(4);
+        assertThat(root.left.data).isEqualTo(2);
+        assertThat(root.right.data).isEqualTo(5);
+    }
+
 }
