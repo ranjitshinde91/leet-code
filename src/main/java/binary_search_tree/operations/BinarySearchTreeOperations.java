@@ -23,10 +23,10 @@ public class BinarySearchTreeOperations {
         if (root == null) {
             return false;
         }
-        if (root.data == x) {
+        else if (root.data == x) {
             return true;
         }
-        if (x < root.data) {
+        else if (x < root.data) {
             return search(root.left, x);
         }
         return search(root.right, x);
