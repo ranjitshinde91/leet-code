@@ -19,11 +19,9 @@ public class BinarySearchTreeOperations {
     boolean search(Node root, int x) {
         if (root == null) {
             return false;
-        }
-        else if (root.data == x) {
+        } else if (root.data == x) {
             return true;
-        }
-        else if (x < root.data) {
+        } else if (x < root.data) {
             return search(root.left, x);
         }
         return search(root.right, x);
@@ -33,40 +31,37 @@ public class BinarySearchTreeOperations {
         if (root == null) {
             return null;
         }
-        if (root.data == x) {
+        if (x < root.data) {
+            root.left = deleteNode(root.left, x);
+        } else if (x > root.data) {
+            root.right = deleteNode(root.right, x);
+        } else {
             if (root.left == null && root.right == null) {
                 return null;
             } else if (root.left != null) {
-                Node node = rightMost(root.left);
+                Node node = inOrderPredecessor(root.left);
                 root.data = node.data;
                 root.left = deleteNode(root.left, node.data);
-                return root;
             } else {
-                Node node = leftMost(root.right);
+                Node node = inorderSuccessor(root.right);
                 root.data = node.data;
                 root.right = deleteNode(root.right, node.data);
-                return root;
             }
-        }
-        if (x < root.data) {
-            root.left = deleteNode(root.left, x);
-        } else {
-            root.right = deleteNode(root.right, x);
         }
         return root;
     }
 
-    private static Node leftMost(Node node) {
+    private static Node inorderSuccessor(Node node) {
         if (node.left == null) {
             return node;
         }
-        return leftMost(node.left);
+        return inorderSuccessor(node.left);
     }
 
-    private static Node rightMost(Node root) {
+    private static Node inOrderPredecessor(Node root) {
         if (root.right == null) {
             return root;
         }
-        return rightMost(root.right);
+        return inOrderPredecessor(root.right);
     }
 }
