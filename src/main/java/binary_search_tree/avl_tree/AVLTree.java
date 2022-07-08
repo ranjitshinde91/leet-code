@@ -14,6 +14,55 @@ public class AVLTree {
         this.root = _insert(root, e);
     }
 
+    public void delete(int e) {
+         this.root = _delete(root, e);
+    }
+
+    private Node _delete(Node node, int e) {
+        if (node == null) {
+            return null;
+        }
+        if (e < node.data) {
+            node.left = _delete(node.left, e);
+        } else if (e > node.data) {
+            node.right = _delete(node.right, e);
+        } else {
+            if (node.left == null) {
+                return node.right;
+            } else if (node.right == null) {
+                return node.left;
+            } else {
+                if (height(node.left) > height(node.right)) {
+                    Node temp = inOrderPredecessor(node.left);
+                    node.data = temp.data;
+                    node.left = _delete(node.left, temp.data);
+                } else {
+                    Node temp = inorderSuccessor(node.right);
+                    node.data = temp.data;
+                    node.right = _delete(node.right, temp.data);
+                }
+            }
+        }
+        if (balanceFactor(node) == 2 || balanceFactor(node) == -2) {
+            return performRotation(node);
+        }
+        return node;
+    }
+
+    private static Node inorderSuccessor(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return inorderSuccessor(node.left);
+    }
+
+    private static Node inOrderPredecessor(Node root) {
+        if (root.right == null) {
+            return root;
+        }
+        return inOrderPredecessor(root.right);
+    }
+
     private Node _insert(Node node, int e) {
         if (node == null) {
             return new Node(e);

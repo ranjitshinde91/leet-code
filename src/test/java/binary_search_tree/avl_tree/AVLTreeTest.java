@@ -71,4 +71,20 @@ class AVLTreeTest {
         assertThat(root.left.data).isEqualTo(20);
         assertThat(root.right.data).isEqualTo(50);
     }
+
+    @Test
+    void delete() {
+        AVLTree avlTree = new AVLTree(20);
+        avlTree.insert(10);
+        avlTree.insert(30);
+        avlTree.insert(40);
+
+        BinaryTreePrinter.printNode(avlTree.root());
+        avlTree.delete(10);
+        BinaryTreePrinter.printNode(avlTree.root());
+
+        assertThat(avlTree.root().data).isEqualTo(30);
+        assertThat(avlTree.root().left.data).isEqualTo(20);
+        assertThat(avlTree.root().right.data).isEqualTo(40);
+    }
 }
