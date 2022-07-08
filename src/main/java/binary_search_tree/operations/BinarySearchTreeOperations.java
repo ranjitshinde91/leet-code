@@ -8,9 +8,6 @@ public class BinarySearchTreeOperations {
         if (root == null) {
             return new Node(key);
         }
-        if (key == root.data) {
-            return root;
-        }
         if (key < root.data) {
             root.left = insert(root.left, key);
         } else {
