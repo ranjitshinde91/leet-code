@@ -1,5 +1,6 @@
 package binary_search_tree.k_th_smallest_number_in_bst;
 
+import binary_search_tree.BinaryTreePrinter;
 import org.junit.jupiter.api.Test;
 import tree.Node;
 
@@ -9,27 +10,27 @@ class KThSmallestNumberInBSTTest {
 
     @Test
     void test() {
-        var twenty = new Node(20);
-        Node ten = new Node(10);
-        Node thirty = new Node(30);
-        Node five = new Node(5);
-        Node fifteen = new Node(15);
-        Node twentyFive = new Node(25);
-        Node thirtyFive = new Node(35);
-
-        twenty.left = ten;
-        twenty.right = thirty;
-
-        ten.left = five;
-        ten.right = fifteen;
-
-        thirty.left = twentyFive;
-        thirty.right = thirtyFive;
-
         var kThSmallestNumberInBST = new KThSmallestNumberInBST();
+        kThSmallestNumberInBST.insert(20);
+        kThSmallestNumberInBST.insert(10);
+        kThSmallestNumberInBST.insert(30);
+        kThSmallestNumberInBST.insert(5);
+        kThSmallestNumberInBST.insert(15);
+        kThSmallestNumberInBST.insert(25);
+        kThSmallestNumberInBST.insert(35);
 
-        assertThat(kThSmallestNumberInBST.kthSmallest(twenty, 2)).isEqualTo(10);
-        assertThat(kThSmallestNumberInBST.kthSmallest(twenty, 3)).isEqualTo(15);
-        assertThat(kThSmallestNumberInBST.kthSmallest(twenty, 4)).isEqualTo(20);
+        Node root = kThSmallestNumberInBST.root();
+
+        BinaryTreePrinter.printNode(root);
+
+        assertThat(kThSmallestNumberInBST.kthSmallest(root, 2)).isEqualTo(10);
+        assertThat(kThSmallestNumberInBST.kthSmallest(root, 3)).isEqualTo(15);
+        assertThat(kThSmallestNumberInBST.kthSmallest(root, 4)).isEqualTo(20);
+
+        assertThat(kThSmallestNumberInBST.kthSmallestOptimized(2)).isEqualTo(10);
+        assertThat(kThSmallestNumberInBST.kthSmallestOptimized(3)).isEqualTo(15);
+        assertThat(kThSmallestNumberInBST.kthSmallestOptimized(4)).isEqualTo(20);
+
+
     }
 }
