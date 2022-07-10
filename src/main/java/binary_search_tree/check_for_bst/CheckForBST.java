@@ -20,6 +20,18 @@ public class CheckForBST {
                 _extracted(node.left, new Range(range.low, node.data)) &&
                 _extracted(node.right, new Range(node.data, range.high));
     }
+
+    private int previous = Integer.MIN_VALUE;
+
+    public boolean isBSTInOrder(Node root) {
+        if (root == null) {
+            return true;
+        }
+        if (!isBSTInOrder(root.left)) return false;
+        if (root.data <= previous) return false;
+        previous = root.data;
+        return isBSTInOrder(root.right);
+    }
 }
 
 class Range {

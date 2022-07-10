@@ -17,6 +17,7 @@ class CheckForBSTTest {
         var checkForBST = new CheckForBST();
 
         assertThat(checkForBST.isBST(three)).isTrue();
+        assertThat(checkForBST.isBSTInOrder(three)).isTrue();
     }
 
     @Test
@@ -28,6 +29,7 @@ class CheckForBSTTest {
         var checkForBST = new CheckForBST();
 
         assertThat(checkForBST.isBST(three)).isFalse();
+        assertThat(checkForBST.isBSTInOrder(three)).isFalse();
     }
 
     @Test
@@ -37,5 +39,6 @@ class CheckForBSTTest {
         var checkForBST = new CheckForBST();
 
         assertThat(checkForBST.isBST(root)).isTrue();
+        assertThat(checkForBST.isBSTInOrder(root)).isTrue();
     }
 }
