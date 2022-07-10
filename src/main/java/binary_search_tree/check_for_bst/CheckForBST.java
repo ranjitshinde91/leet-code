@@ -36,6 +36,6 @@ class Range {
     }
 
     boolean isBetween(int e) {
-        return low <= e && high >= e;
+        return low < e && high > e;
     }
 }
