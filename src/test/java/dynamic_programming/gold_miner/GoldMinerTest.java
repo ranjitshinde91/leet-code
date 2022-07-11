@@ -15,7 +15,17 @@ class GoldMinerTest {
     void memoization(int[][] mine, int expected) {
         var goldMine = new GoldMiner();
 
-        long output = goldMine.mine(mine);
+        long output = goldMine.memoization(mine);
+
+        assertThat(output).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("inputs")
+    void tabulation(int[][] mine, int expected) {
+        var goldMine = new GoldMiner();
+
+        long output = goldMine.tabulation(mine);
 
         assertThat(output).isEqualTo(expected);
     }

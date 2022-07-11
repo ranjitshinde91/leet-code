@@ -7,7 +7,7 @@ public class GoldMiner {
 
     Map<String, Integer> cache = new HashMap<>();
 
-    public int mine(int[][] mine) {
+    public int memoization(int[][] mine) {
         int res = 0;
         int n = mine.length;
         int m = mine[0].length;
@@ -40,5 +40,39 @@ public class GoldMiner {
 
     private String key(int i, int j) {
         return i + "-" + j;
+    }
+
+    public int tabulation(int[][] mine) {
+        int n = mine.length;
+        int m = mine[0].length;
+        int[][] table = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            table[i][m - 1] = mine[i][m - 1];
+        }
+        for (int j = m - 2; j >= 0; j--) {
+            for (int i = 0; i < n; i++) {
+                table[i][j] = mine[i][j] +
+                        Math.max(
+                                Math.max(
+                                        valueOf(table, i + 1, j + 1, n, m),
+                                        valueOf(table, i - 1, j + 1, n, m)
+                                ),
+                                valueOf(table, i, j + 1, n, m)
+                        );
+            }
+        }
+        int max = 0;
+        for (int i = 0; i < n; i++) {
+            max = Math.max(max, table[i][0]);
+        }
+        return max;
+    }
+
+    private int valueOf(int[][] table, int i, int j, int n, int m) {
+        if (i >= n || j >= m || i < 0 || j < 0) {
+            return 0;
+        }
+        return table[i][j];
     }
 }
