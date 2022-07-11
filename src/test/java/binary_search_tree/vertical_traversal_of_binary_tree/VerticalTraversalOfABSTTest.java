@@ -1,5 +1,6 @@
 package binary_search_tree.vertical_traversal_of_binary_tree;
 
+import binary_search_tree.BinaryTreePrinter;
 import org.junit.jupiter.api.Test;
 import tree.Node;
 
@@ -10,29 +11,11 @@ class VerticalTraversalOfABSTTest {
 
     @Test
     void test1() {
-        var ten = new Node(10);
-        var fifteen = new Node(15);
-        var twentyFive = new Node(25);
-        var thirtyFive = new Node(35);
-        var twenty = new Node(20);
-        var seventyFive = new Node(75);
-        var eighty = new Node(80);
-        var forty = new Node(40);
-
-        ten.left = fifteen;
-        ten.right = twentyFive;
-
-        fifteen.left = thirtyFive;
-        fifteen.right = twenty;
-
-        thirtyFive.left = forty;
-
-        twenty.right = seventyFive;
-        seventyFive.right = eighty;
+        Node node = buildTree("10 15 25 35 20 N N 40 N N 75 N N N 80 N N");
 
         var verticalTraversalOfABST = new VerticalTraversalOfABST();
 
-        var traversal = verticalTraversalOfABST.traverse(ten);
+        var traversal = verticalTraversalOfABST.traverse(node);
 
         assertThat(traversal).containsExactly(40, 35, 15, 10, 20, 25, 75, 80);
     }
