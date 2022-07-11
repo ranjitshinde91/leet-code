@@ -1,10 +1,10 @@
-package binary_search_tree.vertical_sum_in_a_bst;
+package binary_search_tree.vertical_sum_in_a_tree;
 
 import tree.Node;
 
 import java.util.*;
 
-public class VerticalSumInABST {
+public class VerticalSumInATree {
 
     public List<Integer> sum(Node node) {
         Map<Integer, Integer> map = new TreeMap<>();

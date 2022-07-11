@@ -1,11 +1,11 @@
-package binary_search_tree.vertical_sum_in_a_bst;
+package binary_search_tree.vertical_sum_in_a_tree;
 
 import org.junit.jupiter.api.Test;
 import tree.Node;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class VerticalSumInABSTTest {
+class VerticalSumInATreeTest {
 
     @Test
     void test() {
@@ -21,7 +21,7 @@ class VerticalSumInABSTTest {
         twenty.left = five;
         twenty.right = fifteen;
 
-        var verticalSumInABST = new VerticalSumInABST();
+        var verticalSumInABST = new VerticalSumInATree();
 
         var traversal = verticalSumInABST.sum(ten);
 
@@ -50,7 +50,7 @@ class VerticalSumInABSTTest {
         twenty.right = seventyFive;
         seventyFive.right = eighty;
 
-        var verticalSumInABST = new VerticalSumInABST();
+        var verticalSumInABST = new VerticalSumInATree();
 
         var traversal = verticalSumInABST.sum(ten);
 
