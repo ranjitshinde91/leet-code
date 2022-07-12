@@ -15,11 +15,22 @@ class DetectCycleInADirectedGraphTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    void name(String input, boolean expected) {
+    void dfsBased(String input, boolean expected) {
         ArrayList<ArrayList<Integer>> adjacencyList = GraphAdjacencyMatrixBuilder.build(input, DIRECTED);
         var detectCycleInADirectedGraph = new DetectCycleInADirectedGraph();
 
         boolean isCycle = detectCycleInADirectedGraph.isCycle(adjacencyList);
+
+        assertThat(isCycle).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("inputs")
+    void bfsBased(String input, boolean expected) {
+        ArrayList<ArrayList<Integer>> adjacencyList = GraphAdjacencyMatrixBuilder.build(input, DIRECTED);
+        var detectCycleInADirectedGraph = new DetectCycleInADirectedGraph();
+
+        boolean isCycle = detectCycleInADirectedGraph.isCycleUsingKahnsAlgorithm(adjacencyList);
 
         assertThat(isCycle).isEqualTo(expected);
     }

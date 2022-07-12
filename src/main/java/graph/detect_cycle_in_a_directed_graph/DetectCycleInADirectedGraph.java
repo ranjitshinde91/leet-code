@@ -1,6 +1,8 @@
 package graph.detect_cycle_in_a_directed_graph;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Queue;
 
 public class DetectCycleInADirectedGraph {
 
@@ -32,4 +34,37 @@ public class DetectCycleInADirectedGraph {
         return false;
     }
 
+    public boolean isCycleUsingKahnsAlgorithm(ArrayList<ArrayList<Integer>> adjacencyList) {
+        int v = adjacencyList.size();
+        Queue<Integer> queue = new ArrayDeque<>();
+        int[] inDegrees = inDegrees(adjacencyList, v);
+        int count = 0;
+
+        for (int i = 0; i < v; i++) {
+            if (inDegrees[i] == 0) {
+                queue.add(i);
+            }
+        }
+        while (!queue.isEmpty()) {
+            Integer poll = queue.poll();
+            count++;
+            for (int e : adjacencyList.get(poll)) {
+                inDegrees[e] = inDegrees[e] - 1;
+                if (inDegrees[e] == 0) {
+                    queue.add(e);
+                }
+            }
+        }
+        return count != v;
+    }
+
+    private int[] inDegrees(ArrayList<ArrayList<Integer>> adj, int v) {
+        int[] vertexEdges = new int[v];
+        for (int i = 0; i < v; i++) {
+            for (int edge : adj.get(i)) {
+                vertexEdges[edge] = vertexEdges[edge] + 1;
+            }
+        }
+        return vertexEdges;
+    }
 }
