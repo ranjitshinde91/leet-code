@@ -12,7 +12,7 @@ class FindNumberOfIslandsTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    void tabulation(char[][] grid, int expected) {
+    void dfsBased(char[][] grid, int expected) {
         var findNumberOfIslands = new FindNumberOfIslands();
 
         long output = findNumberOfIslands.numIslands(grid);

@@ -15,7 +15,7 @@ class ShortestPathInAnUndirectedGraphTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    void name(String input, int[] expected) {
+    void bfsBased(String input, int[] expected) {
         ArrayList<ArrayList<Integer>> adjacencyList = GraphAdjacencyMatrixBuilder.build(input, UNDIRECTED);
         var shortestPathInAnUndirectedGraph = new ShortestPathInAnUndirectedGraph();
 

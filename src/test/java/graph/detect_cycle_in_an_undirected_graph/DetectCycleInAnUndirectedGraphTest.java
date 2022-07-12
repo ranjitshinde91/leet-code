@@ -14,7 +14,7 @@ class DetectCycleInAnUndirectedGraphTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    void name(String input, boolean expected) {
+    void dfsBased(String input, boolean expected) {
         var adjacencyList = GraphAdjacencyMatrixBuilder.build(input, UNDIRECTED);
         var detectCycleInAnUndirectedGraph = new DetectCycleInAnUndirectedGraph();
 
