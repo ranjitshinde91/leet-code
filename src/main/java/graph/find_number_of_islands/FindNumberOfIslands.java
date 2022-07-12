@@ -11,7 +11,7 @@ public class FindNumberOfIslands {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (grid[i][j] == '1' && visited[i][j] == false) {
-                    visit(grid, i, j, n, m, visited);
+                    dfs(grid, i, j, n, m, visited);
                     count++;
                 }
             }
@@ -19,7 +19,7 @@ public class FindNumberOfIslands {
         return count;
     }
 
-    private void visit(char[][] grid, int i, int j, int n, int m, boolean[][] visited) {
+    private void dfs(char[][] grid, int i, int j, int n, int m, boolean[][] visited) {
         if (i >= n || j >= m || i < 0 || j < 0) {
             return;
         }
@@ -32,16 +32,16 @@ public class FindNumberOfIslands {
 
         visited[i][j] = true;
 
-        visit(grid, i, j + 1, n, m, visited);
-        visit(grid, i, j - 1, n, m, visited);
+        dfs(grid, i, j + 1, n, m, visited);
+        dfs(grid, i, j - 1, n, m, visited);
 
-        visit(grid, i - 1, j, n, m, visited);
-        visit(grid, i + 1, j, n, m, visited);
+        dfs(grid, i - 1, j, n, m, visited);
+        dfs(grid, i + 1, j, n, m, visited);
 
-        visit(grid, i - 1, j + 1, n, m, visited);
-        visit(grid, i + 1, j + 1, n, m, visited);
+        dfs(grid, i - 1, j + 1, n, m, visited);
+        dfs(grid, i + 1, j + 1, n, m, visited);
 
-        visit(grid, i - 1, j - 1, n, m, visited);
-        visit(grid, i + 1, j - 1, n, m, visited);
+        dfs(grid, i - 1, j - 1, n, m, visited);
+        dfs(grid, i + 1, j - 1, n, m, visited);
     }
 }

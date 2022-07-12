@@ -9,7 +9,7 @@ public class DetectCycleInADirectedGraph {
         boolean[] backEdges = new boolean[adj.size()];
         for (int i = 0; i < adj.size(); i++) {
             if (!visited[i]) {
-                boolean isCycle = _isCycle(adj, i, visited, backEdges);
+                boolean isCycle = dfs(adj, i, visited, backEdges);
                 if (isCycle) {
                     return true;
                 }
@@ -18,11 +18,11 @@ public class DetectCycleInADirectedGraph {
         return false;
     }
 
-    private boolean _isCycle(ArrayList<ArrayList<Integer>> adj, int vertex, boolean[] visited, boolean[] backEdges) {
+    private boolean dfs(ArrayList<ArrayList<Integer>> adj, int vertex, boolean[] visited, boolean[] backEdges) {
         visited[vertex] = true;
         backEdges[vertex] = true;
         for (int edge : adj.get(vertex)) {
-            if (!visited[edge] && _isCycle(adj, edge, visited, backEdges)) {
+            if (!visited[edge] && dfs(adj, edge, visited, backEdges)) {
                 return true;
             } else if (backEdges[edge]) {
                 return true;

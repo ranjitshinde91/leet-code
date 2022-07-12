@@ -8,7 +8,7 @@ public class DetectCycleInAnUndirectedGraph {
         boolean[] visited = new boolean[adj.size()];
         for (int i = 0; i < adj.size(); i++) {
             if (!visited[i]) {
-                if (visit(adj, i, -1, visited)) {
+                if (dfs(adj, i, -1, visited)) {
                     return true;
                 }
             }
@@ -16,11 +16,11 @@ public class DetectCycleInAnUndirectedGraph {
         return false;
     }
 
-    private boolean visit(ArrayList<ArrayList<Integer>> adj, int vertex, int parent, boolean[] visited) {
+    private boolean dfs(ArrayList<ArrayList<Integer>> adj, int vertex, int parent, boolean[] visited) {
         visited[vertex] = true;
         for (int edge : adj.get(vertex)) {
             if (!visited[edge]) {
-                if (visit(adj, edge, vertex, visited)) {
+                if (dfs(adj, edge, vertex, visited)) {
                     return true;
                 }
             } else if (edge != parent) {
