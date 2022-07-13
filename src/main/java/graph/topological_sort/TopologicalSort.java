@@ -4,7 +4,7 @@ import java.util.*;
 
 public class TopologicalSort {
 
-    int[] topoSort(int v, ArrayList<ArrayList<Integer>> adj) {
+    int[] bfsBased(int v, ArrayList<ArrayList<Integer>> adj) {
         int[] sorted = new int[v];
         int index = 0;
         Queue<Integer> queue = new ArrayDeque<>();
@@ -15,7 +15,6 @@ public class TopologicalSort {
                 queue.add(i);
             }
         }
-
         while (!queue.isEmpty()) {
             Integer vertex = queue.poll();
             sorted[index++] = vertex;
@@ -38,5 +37,38 @@ public class TopologicalSort {
             }
         }
         return vertexEdges;
+    }
+
+    // Original implementation uses Stack, but here using sorted array to act  as stack to avoid extra space
+    public int[] dfsBased(int v, ArrayList<ArrayList<Integer>> adjacencyList) {
+        int[] sorted = new int[v];
+        boolean[] visited = new boolean[v];
+
+        Index index = new Index(v - 1);
+        for (int i = 0; i < v; i++) {
+            if (!visited[i]) {
+                _dfs(adjacencyList, i, visited, sorted, index);
+            }
+        }
+        return sorted;
+    }
+
+    private static void _dfs(ArrayList<ArrayList<Integer>> adjacencyList, int vertex, boolean[] visited, int[] sorted, Index index) {
+        visited[vertex] = true;
+        for (int edge : adjacencyList.get(vertex)) {
+            if (!visited[edge]) {
+                _dfs(adjacencyList, edge, visited, sorted, index);
+            }
+        }
+        sorted[index.val] = vertex;
+        index.val = index.val - 1;
+    }
+}
+
+class Index {
+    int val;
+
+    public Index(int val) {
+        this.val = val;
     }
 }
