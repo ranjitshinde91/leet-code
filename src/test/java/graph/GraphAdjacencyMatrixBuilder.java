@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GraphAdjacencyMatrixBuilder {
 
-    public static ArrayList<ArrayList<Integer>> build(String input, GraphType type) {
+    public  ArrayList<ArrayList<Integer>> build(String input, GraphType type) {
 
         String[] s = input.split("\n");
         String[] s1 = s[0].split(" ");

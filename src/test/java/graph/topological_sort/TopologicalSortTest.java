@@ -16,7 +16,7 @@ class TopologicalSortTest {
     @ParameterizedTest
     @MethodSource("bfsBased")
     void bfsBased(String input, int[] expected) {
-        ArrayList<ArrayList<Integer>> adjacencyList = GraphAdjacencyMatrixBuilder.build(input, DIRECTED);
+        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyMatrixBuilder().build(input, DIRECTED);
         var topologicalSort = new TopologicalSort();
 
         int[] paths = topologicalSort.bfsBased(adjacencyList.size(), adjacencyList);
@@ -47,7 +47,7 @@ class TopologicalSortTest {
     @ParameterizedTest
     @MethodSource("dfsBased")
     void dfsBased(String input, int[] expected) {
-        ArrayList<ArrayList<Integer>> adjacencyList = GraphAdjacencyMatrixBuilder.build(input, DIRECTED);
+        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyMatrixBuilder().build(input, DIRECTED);
         var topologicalSort = new TopologicalSort();
 
         int[] paths = topologicalSort.dfsBased(adjacencyList.size(), adjacencyList);
