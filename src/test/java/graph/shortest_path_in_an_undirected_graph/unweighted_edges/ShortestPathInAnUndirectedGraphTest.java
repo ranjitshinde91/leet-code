@@ -1,7 +1,6 @@
 package graph.shortest_path_in_an_undirected_graph.unweighted_edges;
 
 import graph.GraphAdjacencyListBuilder;
-import graph.shortest_path_in_an_undirected_graph.unweighted_edges.ShortestPathInAnUndirectedGraph;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
