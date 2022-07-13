@@ -13,7 +13,7 @@ import static graph.EdgeType.WEIGHTED;
 import static graph.GraphType.DIRECTED;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ShortestPathInADAGTest2 {
+class ShortestPathInADAGTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
