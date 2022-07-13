@@ -1,4 +1,4 @@
-package graph.shortest_path_in_a_directed_acyclic_graph;
+package graph.shortest_path_in_a_directed_acyclic_graph.topological_sort_based;
 
 import graph.topological_sort.TopologicalSort;
 

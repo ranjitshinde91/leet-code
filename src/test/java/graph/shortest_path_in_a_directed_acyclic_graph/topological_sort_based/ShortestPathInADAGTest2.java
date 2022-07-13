@@ -1,8 +1,7 @@
-package graph.shortest_path_in_a_directed_acyclic_graph;
+package graph.shortest_path_in_a_directed_acyclic_graph.topological_sort_based;
 
-import graph.EdgeType;
 import graph.GraphAdjacencyMatrixBuilder;
-import org.junit.jupiter.api.Test;
+import graph.shortest_path_in_a_directed_acyclic_graph.topological_sort_based.ShortestPathInADAG;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,7 +14,7 @@ import static graph.EdgeType.WEIGHTED;
 import static graph.GraphType.DIRECTED;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ShortestPathInADAGTest {
+class ShortestPathInADAGTest2 {
 
     @ParameterizedTest
     @MethodSource("inputs")
