@@ -36,6 +36,9 @@ public class GraphAdjacencyMatrixBuilder {
             if (edgeType == EdgeType.WEIGHTED) {
                 int weight = Integer.parseInt(S[2]);
                 this.weights.put(key(u, v), weight);
+                if (type == GraphType.UNDIRECTED) {
+                    this.weights.put(key(v, u), weight);
+                }
             }
         }
         return adj;
