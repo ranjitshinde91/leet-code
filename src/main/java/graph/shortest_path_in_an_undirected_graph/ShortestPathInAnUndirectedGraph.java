@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class ShortestPathInAnUndirectedGraph {
 
-    public int[] shortestPath(ArrayList<ArrayList<Integer>> adjacencyList, int source) {
+    public int[] shortestPath(ArrayList<ArrayList<Integer>> adjacencyList) {
         int v = adjacencyList.size();
         boolean[] visited = new boolean[v];
         int[] distance = new int[v];
@@ -14,7 +14,7 @@ public class ShortestPathInAnUndirectedGraph {
         visited[0] = true;
 
         Queue<Integer> queue = new ArrayDeque<>();
-        queue.add(source);
+        queue.add(0);
 
         while (!queue.isEmpty()) {
             Integer poll = queue.poll();

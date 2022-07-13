@@ -19,7 +19,7 @@ class ShortestPathInAnUndirectedGraphTest {
         ArrayList<ArrayList<Integer>> adjacencyList = GraphAdjacencyMatrixBuilder.build(input, UNDIRECTED);
         var shortestPathInAnUndirectedGraph = new ShortestPathInAnUndirectedGraph();
 
-        int[] paths = shortestPathInAnUndirectedGraph.shortestPath(adjacencyList, 0);
+        int[] paths = shortestPathInAnUndirectedGraph.shortestPath(adjacencyList);
 
         assertThat(paths).containsExactly(expected);
     }
