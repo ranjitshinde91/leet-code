@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GraphAdjacencyMatrixBuilder {
+public class GraphAdjacencyListBuilder {
     private Map<String, Integer> weights;
 
     public ArrayList<ArrayList<Integer>> build(String input, GraphType type) {

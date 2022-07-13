@@ -1,6 +1,6 @@
 package graph.detect_cycle_in_an_undirected_graph;
 
-import graph.GraphAdjacencyMatrixBuilder;
+import graph.GraphAdjacencyListBuilder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,7 +15,7 @@ class DetectCycleInAnUndirectedGraphTest {
     @ParameterizedTest
     @MethodSource("inputs")
     void dfsBased(String input, boolean expected) {
-        var adjacencyList = new GraphAdjacencyMatrixBuilder().build(input, UNDIRECTED);
+        var adjacencyList = new GraphAdjacencyListBuilder().build(input, UNDIRECTED);
         var detectCycleInAnUndirectedGraph = new DetectCycleInAnUndirectedGraph();
 
         boolean isCycle = detectCycleInAnUndirectedGraph.isCycle( adjacencyList);

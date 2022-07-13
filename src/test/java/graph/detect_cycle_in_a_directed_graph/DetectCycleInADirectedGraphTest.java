@@ -1,6 +1,6 @@
 package graph.detect_cycle_in_a_directed_graph;
 
-import graph.GraphAdjacencyMatrixBuilder;
+import graph.GraphAdjacencyListBuilder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -16,7 +16,7 @@ class DetectCycleInADirectedGraphTest {
     @ParameterizedTest
     @MethodSource("inputs")
     void dfsBased(String input, boolean expected) {
-        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyMatrixBuilder().build(input, DIRECTED);
+        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyListBuilder().build(input, DIRECTED);
         var detectCycleInADirectedGraph = new DetectCycleInADirectedGraph();
 
         boolean isCycle = detectCycleInADirectedGraph.isCycle(adjacencyList);
@@ -27,7 +27,7 @@ class DetectCycleInADirectedGraphTest {
     @ParameterizedTest
     @MethodSource("inputs")
     void bfsBased(String input, boolean expected) {
-        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyMatrixBuilder().build(input, DIRECTED);
+        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyListBuilder().build(input, DIRECTED);
         var detectCycleInADirectedGraph = new DetectCycleInADirectedGraph();
 
         boolean isCycle = detectCycleInADirectedGraph.isCycleUsingKahnsAlgorithm(adjacencyList);

@@ -1,7 +1,6 @@
 package graph.shortest_path_in_a_directed_acyclic_graph.topological_sort_based;
 
-import graph.GraphAdjacencyMatrixBuilder;
-import graph.shortest_path_in_a_directed_acyclic_graph.topological_sort_based.ShortestPathInADAG;
+import graph.GraphAdjacencyListBuilder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -19,7 +18,7 @@ class ShortestPathInADAGTest2 {
     @ParameterizedTest
     @MethodSource("inputs")
     void test(String input, int source, int[] expected) {
-        var graphAdjacencyMatrixBuilder = new GraphAdjacencyMatrixBuilder();
+        var graphAdjacencyMatrixBuilder = new GraphAdjacencyListBuilder();
         ArrayList<ArrayList<Integer>> adjacencyList = graphAdjacencyMatrixBuilder.build(input, DIRECTED, WEIGHTED);
         Map<String, Integer> weights = graphAdjacencyMatrixBuilder.weights();
         var shortestPathInADAG = new ShortestPathInADAG();

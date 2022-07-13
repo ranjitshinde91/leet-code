@@ -1,6 +1,6 @@
 package graph.topological_sort;
 
-import graph.GraphAdjacencyMatrixBuilder;
+import graph.GraphAdjacencyListBuilder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -16,7 +16,7 @@ class TopologicalSortTest {
     @ParameterizedTest
     @MethodSource("bfsBased")
     void bfsBased(String input, int[] expected) {
-        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyMatrixBuilder().build(input, DIRECTED);
+        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyListBuilder().build(input, DIRECTED);
         var topologicalSort = new TopologicalSort();
 
         int[] paths = topologicalSort.bfsBased(adjacencyList.size(), adjacencyList);
@@ -47,7 +47,7 @@ class TopologicalSortTest {
     @ParameterizedTest
     @MethodSource("dfsBased")
     void dfsBased(String input, int[] expected) {
-        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyMatrixBuilder().build(input, DIRECTED);
+        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyListBuilder().build(input, DIRECTED);
         var topologicalSort = new TopologicalSort();
 
         int[] paths = topologicalSort.dfsBased(adjacencyList.size(), adjacencyList);

@@ -1,12 +1,11 @@
 package graph.shortest_path_in_an_undirected_graph;
 
-import graph.GraphAdjacencyMatrixBuilder;
+import graph.GraphAdjacencyListBuilder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static graph.GraphType.UNDIRECTED;
@@ -17,7 +16,7 @@ class ShortestPathInAnUndirectedGraphTest {
     @ParameterizedTest
     @MethodSource("inputs")
     void bfsBased(String input, int source, int[] expected) {
-        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyMatrixBuilder().build(input, UNDIRECTED);
+        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyListBuilder().build(input, UNDIRECTED);
         var shortestPathInAnUndirectedGraph = new ShortestPathInAnUndirectedGraph();
 
         int[] paths = shortestPathInAnUndirectedGraph.shortestPath(adjacencyList, source);
