@@ -20,6 +20,17 @@ class PrimsAlgorithmTest {
         var result = primsAlgorithm.minimumSpanningTree(grid);
 
         assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("inputs")
+    void otherApproach(int[][] grid, int expected) {
+
+        var primsAlgorithm = new PrimsAlgorithm();
+
+        var result = primsAlgorithm.otherApproach(grid);
+
+        assertThat(result).isEqualTo(expected);
 
     }
 

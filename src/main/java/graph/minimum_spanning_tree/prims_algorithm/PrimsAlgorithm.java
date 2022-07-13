@@ -27,4 +27,34 @@ public class PrimsAlgorithm {
         }
         return cost;
     }
+
+    public int otherApproach(int[][] grid) {
+        int v = grid.length;
+        int[] key = new int[v];
+        for (int i = 0; i < v; i++) {
+            key[i] = Integer.MAX_VALUE;
+        }
+        key[0] = 0;
+        boolean[] mst = new boolean[v];
+        int res = 0;
+
+        for (int count = 0; count < v; count++) {
+            int u = -1;
+
+            for (int i = 0; i < v; i++) {
+                if (!mst[i] && (u == -1 || key[i] < key[u])) {
+                    u = i;
+                }
+            }
+            mst[u] = true;
+            res = res + key[u];
+
+            for (int p = 0; p < v; p++) {
+                if (!mst[p] && grid[u][p] != 0 && grid[u][p] < key[p]) {
+                    key[p] = grid[u][p];
+                }
+            }
+        }
+        return res;
+    }
 }
