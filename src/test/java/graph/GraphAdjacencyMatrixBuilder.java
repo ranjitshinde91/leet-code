@@ -8,14 +8,14 @@ public class GraphAdjacencyMatrixBuilder {
     private Map<String, Integer> weights;
 
     public ArrayList<ArrayList<Integer>> build(String input, GraphType type) {
-        return build(input, type, false);
+        return build(input, type, EdgeType.UNWEIGHTED);
     }
 
-    public ArrayList<ArrayList<Integer>> build(String input, GraphType type, boolean isWeight) {
+    public ArrayList<ArrayList<Integer>> build(String input, GraphType type, EdgeType edgeType) {
         String[] s = input.split("\n");
         String[] s1 = s[0].split(" ");
 
-        if (isWeight) {
+        if (edgeType == EdgeType.WEIGHTED) {
             this.weights = new HashMap<>();
         }
 
@@ -33,7 +33,7 @@ public class GraphAdjacencyMatrixBuilder {
             if (type == GraphType.UNDIRECTED) {
                 adj.get(v).add(u);
             }
-            if (isWeight) {
+            if (edgeType == EdgeType.WEIGHTED) {
                 int weight = Integer.parseInt(S[2]);
                 this.weights.put(key(u, v), weight);
             }

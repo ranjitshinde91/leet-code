@@ -1,5 +1,6 @@
 package graph.shortest_path_in_a_directed_acyclic_graph;
 
+import graph.EdgeType;
 import graph.GraphAdjacencyMatrixBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import static graph.EdgeType.WEIGHTED;
 import static graph.GraphType.DIRECTED;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,7 +21,7 @@ class ShortestPathInADAGTest {
     @MethodSource("inputs")
     void test(String input, int source, int[] expected) {
         var graphAdjacencyMatrixBuilder = new GraphAdjacencyMatrixBuilder();
-        ArrayList<ArrayList<Integer>> adjacencyList = graphAdjacencyMatrixBuilder.build(input, DIRECTED, true);
+        ArrayList<ArrayList<Integer>> adjacencyList = graphAdjacencyMatrixBuilder.build(input, DIRECTED, WEIGHTED);
         Map<String, Integer> weights = graphAdjacencyMatrixBuilder.weights();
         var shortestPathInADAG = new ShortestPathInADAG();
 
