@@ -1,4 +1,4 @@
-package graph.shortest_path_in_a_directed_acyclic_graph.topological_sort_based;
+package graph.shortest_path_in_a_directed_acyclic_graph.bellman_ford_algorithm;
 
 import graph.GraphAdjacencyListBuilder;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +13,7 @@ import static graph.EdgeType.WEIGHTED;
 import static graph.GraphType.DIRECTED;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ShortestPathInADAGTest {
+class BellmanFordAlgorithmTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
@@ -21,9 +21,9 @@ class ShortestPathInADAGTest {
         var graphAdjacencyMatrixBuilder = new GraphAdjacencyListBuilder();
         ArrayList<ArrayList<Integer>> adjacencyList = graphAdjacencyMatrixBuilder.build(input, DIRECTED, WEIGHTED);
         Map<String, Integer> weights = graphAdjacencyMatrixBuilder.weights();
-        var shortestPathInADAG = new ShortestPathInADAG();
+        var bellmanFordAlgorithm = new BellmanFordAlgorithm();
 
-        int[] paths = shortestPathInADAG.shortestPath(adjacencyList, source, weights);
+        int[] paths = bellmanFordAlgorithm.shortestPath(adjacencyList, source, weights);
 
         assertThat(paths).containsExactly(expected);
     }
@@ -54,4 +54,5 @@ class ShortestPathInADAGTest {
                         new int[]{Integer.MAX_VALUE, 0, 3, 9, Integer.MAX_VALUE, Integer.MAX_VALUE})
         );
     }
+
 }
