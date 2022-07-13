@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static graph.GraphType.UNDIRECTED;
@@ -15,11 +16,11 @@ class ShortestPathInAnUndirectedGraphTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    void bfsBased(String input, int[] expected) {
+    void bfsBased(String input, int source, int[] expected) {
         ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyMatrixBuilder().build(input, UNDIRECTED);
         var shortestPathInAnUndirectedGraph = new ShortestPathInAnUndirectedGraph();
 
-        int[] paths = shortestPathInAnUndirectedGraph.shortestPath(adjacencyList);
+        int[] paths = shortestPathInAnUndirectedGraph.shortestPath(adjacencyList, source);
 
         assertThat(paths).containsExactly(expected);
     }
@@ -33,14 +34,22 @@ class ShortestPathInAnUndirectedGraphTest {
                                 "1 2\n" +
                                 "2 3\n" +
                                 "1 3"
-                        , new int[]{0, 1, 1, 2}),
+                        , 0,
+                        new int[]{0, 1, 1, 2}),
                 Arguments.of(
                         "4 4\n" +
                                 "0 1\n" +
                                 "2 3\n" +
                                 "0 2\n" +
                                 "0 3"
-                        , new int[]{0, 1, 1, 1}),
+                        , 0, new int[]{0, 1, 1, 1}),
+                Arguments.of(
+                        "4 4\n" +
+                                "0 1\n" +
+                                "2 3\n" +
+                                "0 2\n" +
+                                "0 3"
+                        , 1, new int[]{1, 0, 2, 2}),
                 Arguments.of(
                         "6 8\n" +
                                 "0 1\n" +
@@ -51,7 +60,7 @@ class ShortestPathInAnUndirectedGraphTest {
                                 "4 5\n" +
                                 "3 5\n" +
                                 "1 3"
-                        , new int[]{0, 1, 1, 2, 1, 2})
+                        , 0, new int[]{0, 1, 1, 2, 1, 2})
         );
     }
 
