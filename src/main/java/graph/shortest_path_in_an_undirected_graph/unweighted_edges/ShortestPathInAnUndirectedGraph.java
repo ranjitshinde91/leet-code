@@ -1,4 +1,4 @@
-package graph.shortest_path_in_an_undirected_graph;
+package graph.shortest_path_in_an_undirected_graph.unweighted_edges;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
