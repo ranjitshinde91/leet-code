@@ -13,7 +13,7 @@ public class BellmanFordAlgorithm {
         }
         distance[source] = 0;
 
-        for (int count = 0; count < v - 1; count++) {
+        for (int count = 0; count < v - 2; count++) {
             for (int u = 0; u < v; u++) {
                 ArrayList<Integer> edges = adjacencyList.get(u);
                 for (int p : edges) {

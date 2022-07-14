@@ -1,7 +1,6 @@
 package graph.shortest_path_in_graph.weighted_edges.bellman_ford_algorithm;
 
 import graph.GraphAdjacencyListBuilder;
-import graph.shortest_path_in_graph.weighted_edges.bellman_ford_algorithm.BellmanFordAlgorithm;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -17,8 +16,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 class BellmanFordAlgorithmTest {
 
     @ParameterizedTest
-    @MethodSource("inputs")
-    void test(String input, int source, int[] expected) {
+    @MethodSource("directedEdges")
+    void directedEdges(String input, int source, int[] expected) {
         var graphAdjacencyMatrixBuilder = new GraphAdjacencyListBuilder();
         ArrayList<ArrayList<Integer>> adjacencyList = graphAdjacencyMatrixBuilder.build(input, DIRECTED, WEIGHTED);
         Map<String, Integer> weights = graphAdjacencyMatrixBuilder.weights();
@@ -29,7 +28,7 @@ class BellmanFordAlgorithmTest {
         assertThat(paths).containsExactly(expected);
     }
 
-    private static Stream<Arguments> inputs() {
+    private static Stream<Arguments> directedEdges() {
         return Stream.of(
                 Arguments.of(
                         "6 7\n" +
@@ -52,7 +51,15 @@ class BellmanFordAlgorithmTest {
                                 "4 5 4\n" +
                                 "5 3 1"
                         , 1,
-                        new int[]{Integer.MAX_VALUE, 0, 3, 9, Integer.MAX_VALUE, Integer.MAX_VALUE})
+                        new int[]{Integer.MAX_VALUE, 0, 3, 9, Integer.MAX_VALUE, Integer.MAX_VALUE}),
+                Arguments.of(
+                        "3 3\n" +
+                                "0 1 4\n" +
+                                "0 2 8\n" +
+                                "2 1 -10"
+                        , 0,
+                        new int[]{0, -2, 8}
+                )
         );
     }
 
