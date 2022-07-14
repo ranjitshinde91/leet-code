@@ -1,4 +1,4 @@
-package graph.shortest_path_in_an_undirected_graph.weighted_edges;
+package graph.shortest_path_in_graph.weighted_edges.dijkstra_algorithm;
 
 import java.util.PriorityQueue;
 

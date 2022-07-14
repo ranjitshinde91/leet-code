@@ -1,6 +1,7 @@
-package graph.shortest_path_in_a_directed_acyclic_graph.bellman_ford_algorithm;
+package graph.shortest_path_in_graph.weighted_edges.bellman_ford_algorithm;
 
 import graph.GraphAdjacencyListBuilder;
+import graph.shortest_path_in_graph.weighted_edges.bellman_ford_algorithm.BellmanFordAlgorithm;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

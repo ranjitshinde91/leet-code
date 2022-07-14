@@ -1,4 +1,4 @@
-package graph.shortest_path_in_a_directed_acyclic_graph.bellman_ford_algorithm;
+package graph.shortest_path_in_graph.weighted_edges.bellman_ford_algorithm;
 
 import java.util.ArrayList;
 import java.util.Map;

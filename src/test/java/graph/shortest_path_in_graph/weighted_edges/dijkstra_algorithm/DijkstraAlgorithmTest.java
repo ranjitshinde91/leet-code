@@ -1,6 +1,6 @@
-package graph.shortest_path_in_an_undirected_graph.weighted_edges;
+package graph.shortest_path_in_graph.weighted_edges.dijkstra_algorithm;
 
-import graph.minimum_spanning_tree.prims_algorithm.PrimsAlgorithm;
+import graph.shortest_path_in_graph.weighted_edges.dijkstra_algorithm.DijkstraAlgorithm;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
