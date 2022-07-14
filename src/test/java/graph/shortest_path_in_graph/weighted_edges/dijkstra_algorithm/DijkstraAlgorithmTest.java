@@ -55,6 +55,15 @@ class DijkstraAlgorithmTest {
                         },
                         1,
                         new int[]{4, 0, 1}
+                ),
+                Arguments.of(
+                        new int[][]{
+                                {0, 4, 8},
+                                {4, 0, -10},
+                                {8, -10, 0},
+                        },
+                        0,
+                        new int[]{0, 4, -6}
                 )
         );
     }

@@ -15,19 +15,19 @@ public class DijkstraAlgorithm {
             distance[i] = Integer.MAX_VALUE;
         }
         distance[source] = 0;
-        boolean[] mst = new boolean[v];
+        boolean[] finalized = new boolean[v];
 
         for (int count = 0; count < v - 1; count++) {
             int u = -1;
 
             for (int i = 0; i < v; i++) {
-                if (!mst[i] && (u == -1 || distance[i] < distance[u])) {
+                if (!finalized[i] && (u == -1 || distance[i] < distance[u])) {
                     u = i;
                 }
             }
-            mst[u] = true;
+            finalized[u] = true;
             for (int p = 0; p < v; p++) {
-                if (grid[u][p] != 0) {
+                if (!finalized[p] && grid[u][p] != 0) {
                     distance[p] = Math.min(distance[p], grid[u][p] + distance[u]);
                 }
             }
@@ -41,6 +41,7 @@ public class DijkstraAlgorithm {
         for (int i = 0; i < v; i++) {
             distance[i] = Integer.MAX_VALUE;
         }
+        boolean[] finalized = new boolean[v];
         distance[source] = 0;
         PriorityQueue<Distance> pq = new PriorityQueue<>(Comparator.comparingInt(d -> d.value));
         pq.add(new Distance(source, 0));
@@ -48,10 +49,10 @@ public class DijkstraAlgorithm {
         for (int count = 0; count < v; count++) {
             Distance minDistance = pq.poll();
             int u = minDistance.vertex;
-            System.out.println("polled "+ u);
+            finalized[u] = true;
 
             for (int p = 0; p < v; p++) {
-                if (grid[u][p] != 0 && grid[u][p] + distance[u] < distance[p]) {
+                if (!finalized[p] && grid[u][p] != 0 && grid[u][p] + distance[u] < distance[p]) {
                     distance[p] = grid[u][p] + distance[u];
                     pq.add(new Distance(p, distance[p]));
                 }
