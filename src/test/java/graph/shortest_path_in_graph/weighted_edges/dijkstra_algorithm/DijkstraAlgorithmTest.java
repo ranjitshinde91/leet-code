@@ -12,7 +12,7 @@ class DijkstraAlgorithmTest {
 
 
     @ParameterizedTest
-    @MethodSource("inputs")
+    @MethodSource("optimizedUnDirectedEdges")
     void test(int[][] grid, int source, int[] expected) {
 
         var dijkstraAlgorithm = new DijkstraAlgorithm();
@@ -24,8 +24,8 @@ class DijkstraAlgorithmTest {
     }
 
     @ParameterizedTest
-    @MethodSource("inputs")
-    void optimized(int[][] grid, int source, int[] expected) {
+    @MethodSource("optimizedUnDirectedEdges")
+    void optimizedUnDirectedEdges(int[][] grid, int source, int[] expected) {
 
         var dijkstraAlgorithm = new DijkstraAlgorithm();
 
@@ -35,7 +35,7 @@ class DijkstraAlgorithmTest {
 
     }
 
-    private static Stream<Arguments> inputs() {
+    private static Stream<Arguments> optimizedUnDirectedEdges() {
         return Stream.of(
                 Arguments.of(
                         new int[][]{
@@ -59,4 +59,28 @@ class DijkstraAlgorithmTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("optimizedDirectedEdges")
+    void optimizedDirectedEdges(int[][] grid, int source, int[] expected) {
+
+        var dijkstraAlgorithm = new DijkstraAlgorithm();
+
+        var result = dijkstraAlgorithm.optimized(grid, source);
+
+        assertThat(result).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> optimizedDirectedEdges() {
+        return Stream.of(
+                Arguments.of(
+                        new int[][]{
+                                {0, 5, 0},
+                                {0, 0, 2},
+                                {3, 0, 0},
+                        },
+                        1,
+                        new int[]{5, 0, 2}
+                )
+        );
+    }
 }

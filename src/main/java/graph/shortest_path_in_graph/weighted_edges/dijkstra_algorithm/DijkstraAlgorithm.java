@@ -1,5 +1,6 @@
 package graph.shortest_path_in_graph.weighted_edges.dijkstra_algorithm;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class DijkstraAlgorithm {
@@ -41,19 +42,31 @@ public class DijkstraAlgorithm {
             distance[i] = Integer.MAX_VALUE;
         }
         distance[source] = 0;
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-        pq.add(source);
+        PriorityQueue<Distance> pq = new PriorityQueue<>(Comparator.comparingInt(d -> d.value));
+        pq.add(new Distance(source, 0));
 
         for (int count = 0; count < v; count++) {
-            int u = pq.poll();
+            Distance minDistance = pq.poll();
+            int u = minDistance.vertex;
+            System.out.println("polled "+ u);
 
             for (int p = 0; p < v; p++) {
                 if (grid[u][p] != 0 && grid[u][p] + distance[u] < distance[p]) {
                     distance[p] = grid[u][p] + distance[u];
-                    pq.add(p);
+                    pq.add(new Distance(p, distance[p]));
                 }
             }
         }
         return distance;
+    }
+}
+
+class Distance {
+    int vertex;
+    int value;
+
+    public Distance(int vertex, int value) {
+        this.vertex = vertex;
+        this.value = value;
     }
 }
