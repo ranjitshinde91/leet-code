@@ -8,18 +8,30 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
+import static graph.GraphType.DIRECTED;
 import static graph.GraphType.UNDIRECTED;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ShortestPathInAnUndirectedGraphTest {
+class ShortestPathInUnWeightedEdgeGraphTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    void bfsBased(String input, int source, int[] expected) {
+    void undirectedEdges(String input, int source, int[] expected) {
         ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyListBuilder().build(input, UNDIRECTED);
-        var shortestPathInAnUndirectedGraph = new ShortestPathInAnUndirectedGraph();
+        var shortestPathInAnUndirectedGraph = new ShortestPathInUnWeightedEdgeGraph();
 
-        int[] paths = shortestPathInAnUndirectedGraph.shortestPath(adjacencyList, source);
+        int[] paths = shortestPathInAnUndirectedGraph.bfsBased(adjacencyList, source);
+
+        assertThat(paths).containsExactly(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("inputs")
+    void directedEdges(String input, int source, int[] expected) {
+        ArrayList<ArrayList<Integer>> adjacencyList = new GraphAdjacencyListBuilder().build(input, DIRECTED);
+        var shortestPathInAnUndirectedGraph = new ShortestPathInUnWeightedEdgeGraph();
+
+        int[] paths = shortestPathInAnUndirectedGraph.bfsBased(adjacencyList, source);
 
         assertThat(paths).containsExactly(expected);
     }
@@ -44,7 +56,7 @@ class ShortestPathInAnUndirectedGraphTest {
                         , 0, new int[]{0, 1, 1, 1}),
                 Arguments.of(
                         "4 4\n" +
-                                "0 1\n" +
+                                "1 0\n" +
                                 "2 3\n" +
                                 "0 2\n" +
                                 "0 3"
@@ -62,5 +74,4 @@ class ShortestPathInAnUndirectedGraphTest {
                         , 0, new int[]{0, 1, 1, 2, 1, 2})
         );
     }
-
 }

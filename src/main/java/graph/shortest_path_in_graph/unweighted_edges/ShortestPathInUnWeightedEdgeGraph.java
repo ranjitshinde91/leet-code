@@ -4,9 +4,9 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
 
-public class ShortestPathInAnUndirectedGraph {
+public class ShortestPathInUnWeightedEdgeGraph {
 
-    public int[] shortestPath(ArrayList<ArrayList<Integer>> adjacencyList, int source) {
+    public int[] bfsBased(ArrayList<ArrayList<Integer>> adjacencyList, int source) {
         int v = adjacencyList.size();
         boolean[] visited = new boolean[v];
         int[] distance = new int[v];
