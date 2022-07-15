@@ -62,8 +62,9 @@ public class ArticulationPoint {
                 if (parent[u] != -1 && low[v] >= discoveryTime[u]) {
                     ap[u] = true;
                 }
-            } else if (v != parent[u])
+            } else if (v != parent[u]) {
                 low[u] = Math.min(low[u], this.discoveryTime[v]);
+            }
         }
     }
 }
