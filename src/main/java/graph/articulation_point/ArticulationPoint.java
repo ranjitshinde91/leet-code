@@ -26,7 +26,7 @@ public class ArticulationPoint {
 
         for (int i = 0; i < v; i++)
             if (!visited[i])
-                _dfs(adj, visited, 0);
+                _dfs(adj, visited, i);
 
         ArrayList<Integer> adjPoints = new ArrayList<>();
         for (int i = 0; i < v; i++) {
