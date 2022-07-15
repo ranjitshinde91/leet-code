@@ -46,7 +46,45 @@ class KruskalAlgorithmTest {
                         ),
                         4,
                         18
+                ),
+                Arguments.of(
+                        List.of(
+                                new Edge(1, 2, 8),
+                                new Edge(1, 5, 14),
+                                new Edge(1, 8, 19),
+                                new Edge(2, 3, 14),
+                                new Edge(2, 5, 4),
+                                new Edge(2, 6, 17),
+                                new Edge(2, 7, 7),
+                                new Edge(2, 8, 15),
+                                new Edge(3, 7, 6),
+                                new Edge(3, 8, 10),
+                                new Edge(3, 9, 12),
+                                new Edge(4, 7, 13),
+                                new Edge(4, 8, 18),
+                                new Edge(4, 9, 3),
+                                new Edge(6, 7, 17),
+                                new Edge(6, 8, 10)
+                        ),
+                        9,
+                        60
                 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         );
     }
 }
