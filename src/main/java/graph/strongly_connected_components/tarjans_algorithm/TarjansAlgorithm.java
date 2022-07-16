@@ -23,7 +23,7 @@ public class TarjansAlgorithm {
                 _dfs(adjacencyList, i, disTime, low, stack, backEdges, components);
             }
         }
-        Collections.sort(components, Comparator.comparing(a -> a.get(0)));
+        components.sort(Comparator.comparing(a -> a.get(0)));
         return components;
     }
 
