@@ -43,25 +43,28 @@ public class TopologicalSort {
     public int[] dfsBased(int v, ArrayList<ArrayList<Integer>> adjacencyList) {
         int[] sorted = new int[v];
         boolean[] visited = new boolean[v];
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
 
-        Index index = new Index(v - 1);
         for (int i = 0; i < v; i++) {
             if (!visited[i]) {
-                _dfs(adjacencyList, i, visited, sorted, index);
+                _dfs(adjacencyList, i, visited, stack);
             }
+        }
+        int index = 0;
+        while (!stack.isEmpty()) {
+            sorted[index++] = stack.pop();
         }
         return sorted;
     }
 
-    private static void _dfs(ArrayList<ArrayList<Integer>> adjacencyList, int vertex, boolean[] visited, int[] sorted, Index index) {
+    private static void _dfs(ArrayList<ArrayList<Integer>> adjacencyList, int vertex, boolean[] visited, ArrayDeque<Integer> stack) {
         visited[vertex] = true;
         for (int edge : adjacencyList.get(vertex)) {
             if (!visited[edge]) {
-                _dfs(adjacencyList, edge, visited, sorted, index);
+                _dfs(adjacencyList, edge, visited, stack);
             }
         }
-        sorted[index.val] = vertex;
-        index.val = index.val - 1;
+        stack.push(vertex);
     }
 }
 
