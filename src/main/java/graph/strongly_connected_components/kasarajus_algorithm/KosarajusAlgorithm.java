@@ -1,15 +1,13 @@
 package graph.strongly_connected_components.kasarajus_algorithm;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
+
+import java.util.*;
 
 public class KosarajusAlgorithm {
 
     public int stronglyConnectedComponents(int v, ArrayList<ArrayList<Integer>> adjacencyList) {
-        VertexByFinishTime[] vertices = orderedByFinishTime(v, adjacencyList);
+        int[] vertices = orderedByFinishTime(v, adjacencyList);
         ArrayList<ArrayList<Integer>> reversed = reverseEdges(v, adjacencyList);
         return dfs(v, vertices, reversed);
     }
@@ -27,13 +25,13 @@ public class KosarajusAlgorithm {
         return adList;
     }
 
-    private int dfs(int v, VertexByFinishTime[] vertices, ArrayList<ArrayList<Integer>> adjacencyList) {
+    private int dfs(int v, int[] vertices, ArrayList<ArrayList<Integer>> adjacencyList) {
         int count = 0;
         boolean[] visited = new boolean[v];
-        for (VertexByFinishTime vertexByFinishTime : vertices) {
-            if (!visited[vertexByFinishTime.vertex]) {
+        for (int vertex : vertices) {
+            if (!visited[vertex]) {
                 count++;
-                _dfsTraversal(adjacencyList, vertexByFinishTime.vertex, visited);
+                _dfsTraversal(adjacencyList, vertex, visited);
             }
         }
         return count;
@@ -41,31 +39,35 @@ public class KosarajusAlgorithm {
 
     int time = 1;
 
-    private VertexByFinishTime[] orderedByFinishTime(int v, ArrayList<ArrayList<Integer>> adjacencyList) {
+    private int[] orderedByFinishTime(int v, ArrayList<ArrayList<Integer>> adjacencyList) {
         boolean[] visited = new boolean[v];
-        VertexByFinishTime[] finishTime = new VertexByFinishTime[v];
+        int[] finishTime = new int[v];
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
 
         for (int i = 0; i < v; i++) {
             if (!visited[i]) {
-                _dfs(adjacencyList, i, visited, finishTime);
+                _dfs(adjacencyList, i, visited, stack);
             }
         }
 
-        Arrays.sort(finishTime, Collections.reverseOrder(Comparator.comparingInt(it -> it.finishTime)));
+        int index = 0;
+        while (!stack.isEmpty()) {
+            finishTime[index++] = stack.pop();
+        }
         return finishTime;
     }
 
     private void _dfs(ArrayList<ArrayList<Integer>> adjacencyList,
                       int vertex,
                       boolean[] visited,
-                      VertexByFinishTime[] finishTime) {
+                      ArrayDeque<Integer> stack) {
         visited[vertex] = true;
         for (int edge : adjacencyList.get(vertex)) {
             if (!visited[edge]) {
-                _dfs(adjacencyList, edge, visited, finishTime);
+                _dfs(adjacencyList, edge, visited, stack);
             }
         }
-        finishTime[vertex] = new VertexByFinishTime(vertex, this.time);
+        stack.push(vertex);
         this.time++;
     }
 
@@ -79,23 +81,5 @@ public class KosarajusAlgorithm {
                 _dfsTraversal(adjacencyList, edge, visited);
             }
         }
-    }
-}
-
-class VertexByFinishTime {
-    int vertex;
-    int finishTime;
-
-    public VertexByFinishTime(int vertex, int finishTime) {
-        this.vertex = vertex;
-        this.finishTime = finishTime;
-    }
-
-    @Override
-    public String toString() {
-        return "VertexByFinishTime{" +
-                "vertex=" + vertex +
-                ", finishTime=" + finishTime +
-                '}';
     }
 }
