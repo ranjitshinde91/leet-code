@@ -1,4 +1,4 @@
-package sorting.insertion_sort;
+package sorting.algorithms.bubble_sort;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -8,14 +8,14 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class InsertionSortTest {
+class BubbleSortTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
     public void test(int[] input, int[] expected) {
-        var insertionSort = new InsertionSort();
+        var bubbleSort = new BubbleSort();
 
-        insertionSort.insertionSort(input, input.length);
+        bubbleSort.bubbleSort(input, input.length);
 
         assertThat(input).containsExactly(expected);
     }

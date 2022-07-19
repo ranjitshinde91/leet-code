@@ -1,4 +1,4 @@
-package sorting.selection_sort;
+package sorting.algorithms.insertion_sort;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -8,13 +8,14 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SelectionSortTest {
+class InsertionSortTest {
+
     @ParameterizedTest
     @MethodSource("inputs")
     public void test(int[] input, int[] expected) {
-        var selectionSort = new SelectionSort();
+        var insertionSort = new InsertionSort();
 
-        selectionSort.selectionSort(input, input.length);
+        insertionSort.insertionSort(input, input.length);
 
         assertThat(input).containsExactly(expected);
     }
