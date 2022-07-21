@@ -12,7 +12,6 @@ public class KthSmallestElementInArray {
 
         while (low <= high) {
             int partition = lomutoPartition.partition(input, low, high);
-            System.out.println("low, high partition, k-1 " + low + "," + high + "," + partition + " k-1 " + (k - 1));
             if (k - 1 == partition) {
                 return input[partition];
             } else if (partition > k - 1) {
