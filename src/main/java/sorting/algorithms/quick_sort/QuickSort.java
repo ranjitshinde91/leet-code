@@ -24,8 +24,8 @@ public class QuickSort {
     private void _sortUsingHoarePartition(int[] input, int low, int high) {
         if (low < high) {
             int p = new HoarePartition().partition(input, low, high);
-            _sortUsingLomutoPartition(input, low, p);
-            _sortUsingLomutoPartition(input, p + 1, high);
+            _sortUsingHoarePartition(input, low, p);
+            _sortUsingHoarePartition(input, p + 1, high);
         }
     }
 }
