@@ -28,7 +28,6 @@ public class HoarePartition {
     }
 
     private static void swap(int[] arr, int i, int j) {
-        System.out.println("swapping " + arr[i] + " with " + arr[j]);
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
