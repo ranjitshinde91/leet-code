@@ -22,9 +22,8 @@ public class NaivePartition {
                 temp[index++] = input[i];
             }
         }
-        index = 0;
         for (int i = low; i <= high; i++) {
-            input[i] = temp[index++];
+            input[i] = temp[i - low];
         }
         return res;
     }
