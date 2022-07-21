@@ -5,6 +5,10 @@ public class HoarePartition {
 
     public int partition(int[] input, int low, int high, int p) {
         swap(input, low, p);
+        return partition(input, low, high);
+    }
+
+    public int partition(int[] input, int low, int high) {
         int pivotElement = input[low];
         int i = low - 1;
         int j = high + 1;
