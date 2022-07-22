@@ -13,6 +13,14 @@ public class MaximumCutsForThreeSizes {
     }
 
     public int memoization(int n, int a, int b, int c) {
+        int result = _memoization(n, a, b, c);
+        if (result == -1) {
+            return 0;
+        }
+        return result;
+    }
+
+    private int _memoization(int n, int a, int b, int c) {
         if (n == 0) {
             return 0;
         }
@@ -24,9 +32,9 @@ public class MaximumCutsForThreeSizes {
             return cache.get(n);
         }
         int res = max(
-                memoization(n - a, a, b, c),
-                memoization(n - b, a, b, c),
-                memoization(n - c, a, b, c)
+                _memoization(n - a, a, b, c),
+                _memoization(n - b, a, b, c),
+                _memoization(n - c, a, b, c)
         );
         if (res == -1) {
             return res;
