@@ -1,6 +1,8 @@
 package heap.min_heap;
 
 
+import java.util.Arrays;
+
 public class MinHeap {
 
     private final int capacity;
@@ -15,13 +17,13 @@ public class MinHeap {
 
     public MinHeap(int[] ints) {
         this.capacity = ints.length;
-        this.array = ints;
+        this.array = Arrays.copyOf(ints, ints.length);
         this.size = ints.length;
     }
 
     public static MinHeap build(int[] ints) {
         MinHeap minHeap = new MinHeap(ints);
-        for(int i= (minHeap.size-2)/2;i>=0; i--){
+        for (int i = (minHeap.size - 2) / 2; i >= 0; i--) {
             minHeap.heapify(i);
         }
         return minHeap;
@@ -33,8 +35,8 @@ public class MinHeap {
         return meanHeap;
     }
 
-    private void sort(){
-        while(size>0){
+    private void sort() {
+        while (size > 0) {
             int min = deleteMin();
             array[size] = min;
         }
@@ -111,29 +113,29 @@ public class MinHeap {
         }
     }
 
-    public int getMin(){
-        if(size()>0){
+    public int getMin() {
+        if (size() > 0) {
             return array[0];
         }
         return -1;
     }
 
-    public int deleteMin(){
-        if(size == 0){
+    public int deleteMin() {
+        if (size == 0) {
             return -1;
         }
-        if(size == 1){
+        if (size == 1) {
             size--;
             return array[0];
         }
         int min = array[0];
-        array[0] = array[size-1];
+        array[0] = array[size - 1];
         size--;
         heapify(0);
         return min;
     }
 
-    public void decreaseKey(int index, int newValue){
+    public void decreaseKey(int index, int newValue) {
         array[index] = newValue;
         rearrange(index);
     }
@@ -143,7 +145,7 @@ public class MinHeap {
         deleteMin();
     }
 
-    protected int[] array(){
+    protected int[] array() {
         return this.array;
     }
 }
