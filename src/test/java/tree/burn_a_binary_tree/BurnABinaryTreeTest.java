@@ -16,7 +16,7 @@ class BurnABinaryTreeTest {
 
         var result = burnABinaryTree.burn(root, 7);
 
-        assertThat(result).isEqualTo(3);
+        assertThat(result).isEqualTo(2);
     }
 
     @Test
