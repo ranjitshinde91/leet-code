@@ -1,6 +1,6 @@
 package sorting.problems.kth_smallest_element_in_a_array;
 
-import sorting.algorithms.quick_sort.partitions.LomutoPartition;
+import sorting.algorithms.comparision_based.quick_sort.partitions.LomutoPartition;
 
 public class KthSmallestElementInArray {
 
