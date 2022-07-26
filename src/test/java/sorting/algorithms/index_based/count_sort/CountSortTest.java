@@ -33,6 +33,10 @@ class CountSortTest {
                 Arguments.of(
                         new int[]{1, 1, 1, 1, 1},
                         new int[]{1, 1, 1, 1, 1}
+                ),
+                Arguments.of(
+                        new int[]{1, -1, 0, 2, -2},
+                        new int[]{-2, -1, 0, 1, 2}
                 )
         );
     }
