@@ -12,10 +12,20 @@ class MinimumPlatformsTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    public void test(int[] arr, int[] dep, int expected) {
+    public void priorityQueueBased(int[] arr, int[] dep, int expected) {
         var minimumPlatforms = new MinimumPlatforms();
 
         int noOfPlatforms = minimumPlatforms.findPlatform(arr, dep, dep.length);
+
+        assertThat(noOfPlatforms).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("inputs")
+    public void efficient(int[] arr, int[] dep, int expected) {
+        var minimumPlatforms = new MinimumPlatforms();
+
+        int noOfPlatforms = minimumPlatforms.findPlatformEfficient(arr, dep, dep.length);
 
         assertThat(noOfPlatforms).isEqualTo(expected);
     }
@@ -31,6 +41,11 @@ class MinimumPlatformsTest {
                         new int[]{900, 1100, 1235},
                         new int[]{1000, 1200, 1240},
                         1
+                ),
+                Arguments.of(
+                        new int[]{900, 1000, 1235},
+                        new int[]{1000, 1100, 1240},
+                        2
                 )
         );
     }

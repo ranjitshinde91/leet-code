@@ -1,9 +1,6 @@
 package sorting.problems.minimum_platforms;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class MinimumPlatforms {
 
@@ -32,6 +29,29 @@ public class MinimumPlatforms {
 
         }
         return noOfPlatforms;
+    }
+
+    static int findPlatformEfficient(int[] arr, int[] dep, int n) {
+        Arrays.sort(arr);
+        Arrays.sort(dep);
+
+        int plat_needed = 1, result = 1;
+        int i = 1, j = 0;
+
+        while (i < n && j < n) {
+            if (arr[i] <= dep[j]) {
+                plat_needed++;
+                i++;
+            } else {
+                plat_needed--;
+                j++;
+            }
+
+            if (plat_needed > result)
+                result = plat_needed;
+        }
+
+        return result;
     }
 
 }
