@@ -12,7 +12,7 @@ class MinimumPlatformsTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    public void priorityQueueBased(int[] arr, int[] dep, int expected) {
+    public void heapBased(int[] arr, int[] dep, int expected) {
         var minimumPlatforms = new MinimumPlatforms();
 
         int noOfPlatforms = minimumPlatforms.findPlatform(arr, dep, dep.length);
