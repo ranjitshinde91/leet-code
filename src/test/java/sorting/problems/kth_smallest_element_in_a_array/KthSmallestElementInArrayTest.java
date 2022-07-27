@@ -12,10 +12,10 @@ class KthSmallestElementInArrayTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    public void test(int[] input1, int k, int expected) {
+    public void test(int[] input, int k, int expected) {
         var kthSmallestElementInArray = new KthSmallestElementInArray();
 
-        int result = kthSmallestElementInArray.kthSmallest(input1, input1.length, k);
+        int result = kthSmallestElementInArray.kthSmallest(input, input.length, k);
 
         assertThat(result).isEqualTo(expected);
     }

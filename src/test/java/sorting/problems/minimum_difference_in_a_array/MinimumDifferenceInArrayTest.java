@@ -13,10 +13,10 @@ class MinimumDifferenceInArrayTest {
 
     @ParameterizedTest
     @MethodSource("inputs")
-    public void test(int[] input1, int expected) {
+    public void test(int[] input, int expected) {
         var minimumDifferenceInArray = new MinimumDifferenceInArray();
 
-        int result = minimumDifferenceInArray.diff(input1, input1.length);
+        int result = minimumDifferenceInArray.diff(input, input.length);
 
         assertThat(result).isEqualTo(expected);
     }
