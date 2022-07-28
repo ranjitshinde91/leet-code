@@ -1,5 +1,6 @@
 package sorting.algorithms.index_based.count_sort;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -39,5 +40,14 @@ class CountSortTest {
                         new int[]{-2, -1, 0, 1, 2}
                 )
         );
+    }
+
+    @Test
+    public void forString() {
+        var countSort = new CountSort();
+
+        String result = countSort.countSort("edsab");
+
+        assertThat(result).isEqualTo("abdes");
     }
 }

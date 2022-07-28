@@ -58,4 +58,25 @@ public class CountSort {
         }
         return max;
     }
+
+    public static String countSort(String str)
+    {
+        StringBuilder output = new StringBuilder();
+        int[] count = new int[25];
+
+        for(int i=0;i<str.length();i++){
+            int index = str.charAt(i)-97;
+            count[index] = count[index]+1;
+        }
+
+        for(int i=0;i<25;i++){
+            while(count[i]>0){
+                char ch = (char)(i+97);
+                output.append(ch);
+                count[i] = count[i]-1;
+            }
+        }
+        return output.toString();
+    }
+
 }
