@@ -1,8 +1,6 @@
 package heap.merge_k_sorted_arrays;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class MergeKSortedArrays {
 
@@ -30,9 +28,9 @@ public class MergeKSortedArrays {
         return mergedArray;
     }
 
-    public static ArrayList<Integer> mergeKArrays(int[][] arr, int k) {
-        PriorityQueue<Element> pq = new PriorityQueue<>(Comparator.comparingInt(Element::value));
-        ArrayList<Integer> list = new ArrayList<>();
+    public static List<Integer> mergeKArrays(int[][] arr, int k) {
+        var pq = new PriorityQueue<>(Comparator.comparingInt(Element::value));
+        List<Integer> mergedList = new LinkedList<>();
 
         for (int i = 0; i < k; i++) {
             pq.add(new Element(i, 0, arr[i][0]));
@@ -40,12 +38,12 @@ public class MergeKSortedArrays {
 
         while (!pq.isEmpty()) {
             Element e = pq.poll();
-            list.add(e.value());
+            mergedList.add(e.value());
             if (e.columnIndex() < arr[e.arrayIndex()].length - 1) {
                 pq.add(new Element(e.arrayIndex(), e.columnIndex() + 1, arr[e.arrayIndex()][e.columnIndex() + 1]));
             }
         }
-        return list;
+        return mergedList;
     }
 
     record Element(int arrayIndex, int columnIndex, int value) {
