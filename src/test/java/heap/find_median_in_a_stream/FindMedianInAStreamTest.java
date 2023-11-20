@@ -51,7 +51,7 @@ class FindMedianInAStreamTest {
         List<Integer> outputs = List.of(9384, 5135, 2778, 4847, 6916, 7355);
         for (int i = 0; i < numbers.size(); i++) {
             findMedianInAStream.insertHeap(numbers.get(i));
-            assertThat(findMedianInAStream.getMedian()).isEqualTo((double)outputs.get(i));
+            assertThat(findMedianInAStream.getMedian()).isEqualTo((double) outputs.get(i));
         }
     }
 }
