@@ -5,18 +5,15 @@ import java.util.Arrays;
 
 public class MinHeap {
 
-    private final int capacity;
     private final int[] array;
     private int size = 0;
 
 
     MinHeap(int capacity) {
-        this.capacity = capacity;
         this.array = new int[capacity];
     }
 
     public MinHeap(int[] ints) {
-        this.capacity = ints.length;
         this.array = Arrays.copyOf(ints, ints.length);
         this.size = ints.length;
     }
