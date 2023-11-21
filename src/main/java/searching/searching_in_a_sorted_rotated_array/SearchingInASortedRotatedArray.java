@@ -13,17 +13,17 @@ class Solution {
             if (arr[mid] == element) {
                 return mid;
             }
-            if (arr[low] < arr[mid]) {
+            if (arr[low] <= arr[mid]) {
                 if (element >= arr[low] && element < arr[mid]) {
                     high = mid - 1;
                 } else {
                     low = mid + 1;
                 }
             } else {
-                if (element > arr[mid] && element <= arr[high]) {
-                    low = mid + 1;
-                } else {
+                if (element >= arr[low]) {
                     high = mid - 1;
+                } else {
+                    low = low + 1;
                 }
             }
         }
