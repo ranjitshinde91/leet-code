@@ -1,6 +1,6 @@
 package two_pointer.two_sum;
 
-//leetcode-167: Two Sum II - Input Array Is Sorted
+// leetcode-167: Two Sum II - Input Array Is Sorted
 class TwoSum {
 
   public int[] twoSum(int[] numbers, int target) {
