@@ -1,5 +1,6 @@
 package other.maximum_gap;
 
+// leetcode-164: Maximum Gap
 public class MaximumGap {
   public int maximumGap(int[] nums) {
 
@@ -34,7 +35,6 @@ public class MaximumGap {
 
     int maxGap = -1;
     for (Bucket bucket : buckets) {
-      System.out.println(bucket);
       if (bucket == null) {
         continue;
       }
@@ -56,9 +56,6 @@ class Bucket {
 
   @Override
   public String toString() {
-    return "Bucket{" +
-            "min=" + min +
-            ", max=" + max +
-            '}';
+    return "Bucket{" + "min=" + min + ", max=" + max + '}';
   }
 }
