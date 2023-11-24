@@ -1,7 +1,5 @@
 package two_pointer.container_with_most_water;
 
-import java.util.LinkedList;
-
 // leetcode-11 : Container With Most Water
 public class ContainerWithMostWater {
 
