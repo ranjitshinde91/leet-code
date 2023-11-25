@@ -1,6 +1,6 @@
 package two_pointer.container_with_most_water;
 
-// leetcode-11 : Container With Most Water
+// leetcode-11: Container With Most Water
 public class ContainerWithMostWater {
 
   public int maxArea(int[] height) {
