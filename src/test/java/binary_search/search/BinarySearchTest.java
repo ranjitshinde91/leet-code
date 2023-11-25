@@ -1,7 +1,6 @@
-package binary_search;
+package binary_search.search;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;

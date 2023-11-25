@@ -1,4 +1,4 @@
-package binary_search;
+package binary_search.search;
 
 // leetcode-704: Binary Search
 public class BinarySearch {
