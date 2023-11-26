@@ -8,16 +8,15 @@ public class FindMinimumInRotatedSortedArray {
     int min = Integer.MAX_VALUE;
 
     while (low <= high) {
-      if (nums[low] <= nums[high]) {
+      if (nums[low] < nums[high]) {
         return Math.min(min, nums[low]);
       }
       int mid = low + (high - low) / 2;
-      if (nums[low] <= nums[mid]) {
-        min = Math.min(min, nums[low]);
+      min = Math.min(min, nums[mid]);
+      if (nums[mid] >= nums[low]) {
         low = mid + 1;
       } else {
-        min = Math.min(min, nums[mid]);
-        low = low + 1;
+        high = mid - 1;
       }
     }
     return min;
