@@ -12,7 +12,7 @@ public class PermutationInString {
     }
 
     Map<Character, Integer> characterMap = new HashMap<>();
-    populate(s1, characterMap);
+    populate(characterMap, s1);
 
     int remainingMatched = s1.length();
     int startIndex = -1;
@@ -20,8 +20,10 @@ public class PermutationInString {
       Character current = s2.charAt(i);
       if (!characterMap.containsKey(current)) {
         remainingMatched = s1.length();
+        for (int k = startIndex; k < i && startIndex != -1; k++) {
+          characterMap.computeIfPresent(s2.charAt(k), (key, value) -> value + 1);
+        }
         startIndex = -1;
-        populate(s1, characterMap);
       } else {
         if (startIndex == -1) {
           startIndex = i;
@@ -45,8 +47,7 @@ public class PermutationInString {
     return false;
   }
 
-  private static void populate(String s1, Map<Character, Integer> characterMap) {
-    characterMap.clear();
+  private static void populate(Map<Character, Integer> characterMap, String s1) {
     for (int i = 0; i < s1.length(); i++) {
       characterMap.computeIfPresent(s1.charAt(i), (key, value) -> value + 1);
       characterMap.putIfAbsent(s1.charAt(i), 1);
