@@ -28,16 +28,16 @@ public class PermutationInString {
         if (startIndex == -1) {
           startIndex = i;
         }
-        if (characterMap.get(current) == 0) {
+        if (characterMap.get(current) > 0) {
+          remainingMatched--;
+          characterMap.computeIfPresent(current, (key, value) -> value - 1);
+        } else {
           while (s2.charAt(startIndex) != current) {
             characterMap.computeIfPresent(s2.charAt(startIndex), (key, value) -> value + 1);
             startIndex++;
             remainingMatched++;
           }
           startIndex++;
-        } else {
-          remainingMatched--;
-          characterMap.computeIfPresent(current, (key, value) -> value - 1);
         }
         if (remainingMatched == 0) {
           return true;
