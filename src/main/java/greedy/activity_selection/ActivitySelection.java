@@ -1,7 +1,6 @@
 package greedy.activity_selection;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class ActivitySelection {
 
